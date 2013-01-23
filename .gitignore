@@ -3,6 +3,7 @@
 #################
 
 target/
+config.properties
 *.pydevproject
 .project
 .metadata
