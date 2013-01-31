@@ -5,10 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+//import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="FOOSBALL_USER")
+@Table(name="FOOSBALL_PLAYERS")
 public class User {
 
 	private int playerId;
@@ -33,7 +33,7 @@ public class User {
 		this.playerId = playerId;
 	}
 	
-	@NotNull
+	//@NotNull
 	@Column(name="LAST_NAME")
 	public String getLastName() {
 		return lastName;
@@ -43,7 +43,7 @@ public class User {
 		this.lastName = lastName;
 	}
 	
-	@NotNull
+	//@NotNull
 	@Column(name="FIRST_NAME")
 	public String getFirstName() {
 		return firstName;
@@ -53,7 +53,7 @@ public class User {
 		this.firstName = firstName;
 	}
 	
-	@NotNull
+	//@NotNull
 	@Column(name="ELO_RATING")
 	public int getEloRating() {
 		return eloRating;
@@ -63,7 +63,7 @@ public class User {
 		this.eloRating = eloRating;
 	}
 	
-	@NotNull
+	//@NotNull
 	@Column(name="DOUBLES_WINS")
 	public int getDoublesWins() {
 		return doublesWins;
@@ -73,7 +73,7 @@ public class User {
 		this.doublesWins = doubleWins;
 	}
 	
-	@NotNull
+	//@NotNull
 	@Column(name="DOUBLES_LOSSES")
 	public int getDoublesLosses() {
 		return doublesLosses;
@@ -83,7 +83,7 @@ public class User {
 		this.doublesLosses = doublesLosses;
 	}
 	
-	@NotNull
+	//@NotNull
 	@Column(name="SINGLES_WINS")
 	public int getSinglesWins() {
 		return singlesWins;
@@ -93,7 +93,7 @@ public class User {
 		this.singlesWins = singlesWins;
 	}
 	
-	@NotNull
+	//@NotNull
 	@Column(name="SINGLES_LOSSES")
 	public int getSinglesLosses() {
 		return singlesLosses;
@@ -103,7 +103,7 @@ public class User {
 		this.singlesLosses = singlesLosses;
 	}
 	
-	@NotNull
+	//@NotNull
 	@Column(name="PREV_WINS")
 	public int getPrevWins() {
 		return prevWins;
@@ -113,7 +113,7 @@ public class User {
 		this.prevWins = prevWins;
 	}
 	
-	@NotNull
+	//@NotNull
 	@Column(name="PREV_LOSSES")
 	public int getPrevLosses() {
 		return prevLosses;
