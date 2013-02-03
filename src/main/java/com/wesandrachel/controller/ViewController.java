@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class FoosballController {
-
+public class ViewController {
+	
 	@RequestMapping(method=RequestMethod.GET, value={"/", "/test"})
 	public ModelAndView getWelcomeView() {
 		return new ModelAndView("WelcomeView");

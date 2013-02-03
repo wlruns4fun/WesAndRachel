@@ -10,6 +10,8 @@
 	
 	<properties>
 		<SPRING_VERSION>3.2.0.RELEASE</SPRING_VERSION>
+		<HIBERNATE_VERSION>4.1.9.Final</HIBERNATE_VERSION>
+		<JACKSON_VERSION>1.9.11</JACKSON_VERSION>
 	</properties>
 	
 	<build>
@@ -44,6 +46,23 @@
 	
 	<dependencies>
 	
+		<!-- SPRING MVC: -->
+		<dependency>
+ 			<groupId>org.springframework</groupId>
+ 			<artifactId>spring-core</artifactId>
+ 			<version>${SPRING_VERSION}</version>
+		</dependency>
+		<dependency>
+ 			<groupId>org.springframework</groupId>
+ 			<artifactId>spring-context</artifactId>
+ 			<version>${SPRING_VERSION}</version>
+		</dependency>
+		<dependency>
+ 			<groupId>org.springframework</groupId>
+ 			<artifactId>spring-webmvc</artifactId>
+ 			<version>${SPRING_VERSION}</version>
+		</dependency>
+
 		<!-- TESTING: -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -63,23 +82,6 @@
 	        <version>3.0.1</version>
 	        <scope>test</scope>
      	</dependency>
-	
-		<!-- SPRING MVC: -->
-		<dependency>
- 			<groupId>org.springframework</groupId>
- 			<artifactId>spring-core</artifactId>
- 			<version>${SPRING_VERSION}</version>
-		</dependency>
-		<dependency>
- 			<groupId>org.springframework</groupId>
- 			<artifactId>spring-context</artifactId>
- 			<version>${SPRING_VERSION}</version>
-		</dependency>
-		<dependency>
- 			<groupId>org.springframework</groupId>
- 			<artifactId>spring-webmvc</artifactId>
- 			<version>${SPRING_VERSION}</version>
-		</dependency>
 		
 		<!-- SQL SERVER: -->
 		<dependency>
@@ -97,7 +99,7 @@
 		<dependency>
     		<groupId>org.hibernate</groupId>
    			<artifactId>hibernate-core</artifactId>
-    		<version>4.1.9.Final</version>
+    		<version>${HIBERNATE_VERSION}</version>
 		</dependency> 
 		<dependency>
 		    <groupId>org.springframework</groupId>
@@ -109,13 +111,24 @@
 			<artifactId>spring-tx</artifactId>
 			<version>${SPRING_VERSION}</version>
 		</dependency> 
-		<!--  
 		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-			<version>1.0.0.GA</version>
+	      	<groupId>org.hibernate</groupId>
+	      	<artifactId>hibernate-ehcache</artifactId>
+	      	<version>${HIBERNATE_VERSION}</version>
+	    </dependency>
+		
+		<!-- JSON: -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>${JACKSON_VERSION}</version>
 		</dependency>
-		-->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-asl</artifactId>
+			<version>${JACKSON_VERSION}</version>
+		</dependency>
+            
             
 	</dependencies>
 	

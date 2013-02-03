@@ -1,16 +1,19 @@
 package com.wesandrachel.model.dao;
 
-import com.wesandrachel.model.domain.User;
+import com.wesandrachel.model.domain.Player;
+
 import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional
-public class UserDao {
+public class PlayerDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -20,8 +23,8 @@ public class UserDao {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<User> getAllUsers() {
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(User.class);
-		return (List<User>) criteria.list();
+	public List<Player> getPlayers() {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Player.class);
+		return (List<Player>) criteria.list();
 	}
 }

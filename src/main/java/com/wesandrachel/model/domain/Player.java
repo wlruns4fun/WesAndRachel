@@ -1,15 +1,24 @@
 package com.wesandrachel.model.domain;
 
+import com.wesandrachel.model.domain.Category;
+
+import java.util.List;
+
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-//import javax.validation.constraints.NotNull;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
+@Cacheable
+@Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
 @Table(name="FOOSBALL_PLAYERS")
-public class User {
+public class Player {
 
 	private int playerId;
 	private String lastName;
@@ -21,20 +30,22 @@ public class User {
 	private int singlesLosses = 0;
 	private int prevWins = 0;
 	private int prevLosses = 0;
+	private List<Category> categories;
 	
 	@Id
 	@GeneratedValue
-	@Column(name="PLAYER_ID")
+	@Column(name="PLAYER_ID", nullable=false)
 	public int getPlayerId() {
 		return playerId;
 	}
 	
 	public void setPlayerId(int playerId) {
-		this.playerId = playerId;
+		if (playerId > -1) {
+			this.playerId = playerId;
+		}
 	}
 	
-	//@NotNull
-	@Column(name="LAST_NAME")
+	@Column(name="LAST_NAME", nullable=false)
 	public String getLastName() {
 		return lastName;
 	}
@@ -43,8 +54,7 @@ public class User {
 		this.lastName = lastName;
 	}
 	
-	//@NotNull
-	@Column(name="FIRST_NAME")
+	@Column(name="FIRST_NAME", nullable=false)
 	public String getFirstName() {
 		return firstName;
 	}
@@ -53,8 +63,7 @@ public class User {
 		this.firstName = firstName;
 	}
 	
-	//@NotNull
-	@Column(name="ELO_RATING")
+	@Column(name="ELO_RATING", nullable=false)
 	public int getEloRating() {
 		return eloRating;
 	}
@@ -63,8 +72,7 @@ public class User {
 		this.eloRating = eloRating;
 	}
 	
-	//@NotNull
-	@Column(name="DOUBLES_WINS")
+	@Column(name="DOUBLES_WINS", nullable=false)
 	public int getDoublesWins() {
 		return doublesWins;
 	}
@@ -73,8 +81,7 @@ public class User {
 		this.doublesWins = doubleWins;
 	}
 	
-	//@NotNull
-	@Column(name="DOUBLES_LOSSES")
+	@Column(name="DOUBLES_LOSSES", nullable=false)
 	public int getDoublesLosses() {
 		return doublesLosses;
 	}
@@ -83,8 +90,7 @@ public class User {
 		this.doublesLosses = doublesLosses;
 	}
 	
-	//@NotNull
-	@Column(name="SINGLES_WINS")
+	@Column(name="SINGLES_WINS", nullable=false)
 	public int getSinglesWins() {
 		return singlesWins;
 	}
@@ -93,8 +99,7 @@ public class User {
 		this.singlesWins = singlesWins;
 	}
 	
-	//@NotNull
-	@Column(name="SINGLES_LOSSES")
+	@Column(name="SINGLES_LOSSES", nullable=false)
 	public int getSinglesLosses() {
 		return singlesLosses;
 	}
@@ -103,8 +108,7 @@ public class User {
 		this.singlesLosses = singlesLosses;
 	}
 	
-	//@NotNull
-	@Column(name="PREV_WINS")
+	@Column(name="PREV_WINS", nullable=false)
 	public int getPrevWins() {
 		return prevWins;
 	}
@@ -113,8 +117,7 @@ public class User {
 		this.prevWins = prevWins;
 	}
 	
-	//@NotNull
-	@Column(name="PREV_LOSSES")
+	@Column(name="PREV_LOSSES", nullable=false)
 	public int getPrevLosses() {
 		return prevLosses;
 	}
