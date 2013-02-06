@@ -29,7 +29,7 @@ public class GameDaoTest {
 	
 //	@Test
 //	public void getGamesByPlayer_returnsAllGamesForThatPlayerId() {
-//		List<Game> gameList = gameDao.getGamesByPlayer("0");
+//		List<Game> gameList = gameDao.getGamesByPlayer("1");
 //		Assert.assertEquals("getGamesByPlayer returns games", 10, gameList.size());
 //	}
 //	

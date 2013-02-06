@@ -25,6 +25,9 @@
 	</bean>
 	
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+
+		<property name="dataSource" ref="dataSource"/>
+
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
@@ -34,16 +37,11 @@
 				<prop key="hibernate.show_sql">false</prop>
 			</props>
 		</property>
-		<property name="dataSource" ref="dataSource"/>
-		<property name="annotatedClasses">
-			<list>	
-				<value>com.wesandrachel.model.domain.Category</value>
-				<value>com.wesandrachel.model.domain.Game</value>	
-				<value>com.wesandrachel.model.domain.Player</value>
-			</list>
-		</property>
+		
+		<property name="packagesToScan" value="com.wesandrachel.model.domain"/>
+
 	</bean>
-	
+
 	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 	    <property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
@@ -55,8 +53,12 @@
 	<bean id="gameDao" class="com.wesandrachel.model.dao.GameDao">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
-	 
+	
 	<bean id="playerDao" class="com.wesandrachel.model.dao.PlayerDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="playerDetailsDao" class="com.wesandrachel.model.dao.PlayerDetailsDao">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	
