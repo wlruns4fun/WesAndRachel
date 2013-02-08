@@ -3,11 +3,9 @@ package com.wesandrachel.model.dao;
 import com.wesandrachel.model.domain.Game;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.junit.Test;
@@ -27,7 +25,7 @@ public class GameDaoTest {
 	@Ignore("unit test takes >1min to return all games")
 	public void getAllGames_returnsGames() {
 		List<Game> allGames = gameDao.getAllGames();
-		Assert.assertTrue("allGames", allGames.size() > 0);
+		Assert.assertTrue("allGames.size() !> 0", allGames.size() > 0);
 	}
 	
 	@Test
@@ -77,6 +75,26 @@ public class GameDaoTest {
 		Assert.assertEquals("shutout", true, game.getShutout());
 	}
 	
+	@Test
+	public void clearGameCache_evictsGameEntitiesFromSessionCache() {
+		long start;
+		long stop;
+		
+		gameDao.clearGameCache();
+		
+		start = System.currentTimeMillis();
+		gameDao.getGame(1);
+		stop = System.currentTimeMillis();
+		long baseQueryTime = stop-start;
+		
+		start = System.currentTimeMillis();
+		gameDao.getGame(1);
+		stop = System.currentTimeMillis();
+		long cachedQueryTime = stop-start;
+		
+		Assert.assertTrue("caching should reduce query time: "+cachedQueryTime+" !< "+baseQueryTime, cachedQueryTime < baseQueryTime);
+	}
+	
 //	@Test
 //	public void getGamesByPlayer_returnsAllGamesForThatPlayerId() {
 //		List<Game> gameList = gameDao.getGamesByPlayer("1");
@@ -88,5 +106,4 @@ public class GameDaoTest {
 //		List<Game> gameList = gameDao.getGamesByYear("2006");
 //		Assert.assertEquals("getGamesByYear returns games", 10, gameList.size());
 //	}
-	
 }

@@ -32,4 +32,8 @@ public class PlayerDao {
 		Object player = sessionFactory.getCurrentSession().get(Player.class, id);
 		return (Player) player;
 	}
+	
+	public void clearPlayerCache() {
+		sessionFactory.getCache().evictEntityRegion(Player.class);
+	}
 }

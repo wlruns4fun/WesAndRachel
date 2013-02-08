@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Cacheable;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,9 +16,11 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity @Table(name="FOOSBALL_PLAYERS")
-@Cacheable @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
+@Cacheable @Cache(usage=CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Player implements Serializable {
 
+	private static final long serialVersionUID = -5497166672716708945L;
+	
 	private int id;
 	private String lastName;
 	private String firstName;
@@ -124,7 +125,7 @@ public class Player implements Serializable {
 		this.prevLosses = prevLosses;
 	}
 	
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany
 	@JoinColumn(name="CATEGORY_ID")
 	public List<Category> getCategories() {
 		return categories;

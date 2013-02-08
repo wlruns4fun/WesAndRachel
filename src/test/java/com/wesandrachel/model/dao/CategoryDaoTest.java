@@ -5,6 +5,7 @@ import com.wesandrachel.model.domain.Category;
 import java.util.List;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class CategoryDaoTest {
 	@Test
 	public void getAllCategories_returnsCategories() {
 		List<Category> allCategories = categoryDao.getAllCategories();
-		Assert.assertTrue("allCategories", allCategories.size() > 0);
+		Assert.assertTrue("allCategories.size() !> 0", allCategories.size() > 0);
 	}
 	
 	@Test
@@ -34,5 +35,25 @@ public class CategoryDaoTest {
 	public void getCategory_returnsName() {
 		Category category = categoryDao.getCategory(1);
 		Assert.assertEquals("name", "Cardinal Solutions", category.getName());
+	}
+	
+	@Test
+	public void clearCategoryCache_evictsCategoryEntitiesFromSessionCache() {
+		long start;
+		long stop;
+		
+		categoryDao.clearCategoryCache();
+		
+		start = System.currentTimeMillis();
+		categoryDao.getCategory(1);
+		stop = System.currentTimeMillis();
+		long baseQueryTime = stop-start;
+		
+		start = System.currentTimeMillis();
+		categoryDao.getCategory(1);
+		stop = System.currentTimeMillis();
+		long cachedQueryTime = stop-start;
+		
+		Assert.assertTrue("caching should reduce query time: "+cachedQueryTime+" !< "+baseQueryTime, cachedQueryTime < baseQueryTime);
 	}
 }

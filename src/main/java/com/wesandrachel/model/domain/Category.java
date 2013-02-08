@@ -13,9 +13,11 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity @Table(name="FOOSBALL_CATEGORIES")
-@Cacheable @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
+@Cacheable @Cache(usage=CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Category implements Serializable {
 
+	private static final long serialVersionUID = -9040449188113301739L;
+	
 	private int id;
 	private String name;
 	

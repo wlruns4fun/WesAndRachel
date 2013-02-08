@@ -5,7 +5,6 @@ import com.wesandrachel.model.domain.Game;
 import java.util.List;
 
 import org.hibernate.Criteria;
-import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +31,10 @@ public class GameDao {
 	public Game getGame(int id) {
 		Object game = sessionFactory.getCurrentSession().get(Game.class, id);
 		return (Game) game;
+	}
+	
+	public void clearGameCache() {
+		sessionFactory.getCache().evictEntityRegion(Game.class);
 	}
 	
 //	@SuppressWarnings("unchecked")

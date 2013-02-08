@@ -18,9 +18,11 @@ import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
 @Entity @Table(name="FOOSBALL_HISTORY")
-@Cacheable @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
+@Cacheable @Cache(usage=CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Game implements Serializable {
 
+	private static final long serialVersionUID = -4633351524563529317L;
+	
 	private int id;
 	private Date date;
 	private Player winner1;

@@ -32,4 +32,8 @@ public class CategoryDao {
 		Object category = sessionFactory.getCurrentSession().get(Category.class, id);
 		return (Category) category;
 	}
+	
+	public void clearCategoryCache() {
+		sessionFactory.getCache().evictEntityRegion(Category.class);
+	}
 }

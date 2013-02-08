@@ -1,11 +1,12 @@
 package com.wesandrachel.model.dao;
 
+import com.wesandrachel.model.domain.Category;
 import com.wesandrachel.model.domain.Player;
 
 import java.util.List;
 
 import org.junit.Assert;
-import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.junit.Test;
 
@@ -20,10 +21,13 @@ public class PlayerDaoTest {
 	@Autowired
 	private PlayerDao playerDao;
 	
+	@Autowired
+	private CategoryDao categoryDao;
+	
 	@Test
 	public void getAllPlayers_returnsPlayers() {
 		List<Player> allPlayers = playerDao.getAllPlayers();
-		Assert.assertTrue("allPlayers", allPlayers.size() > 0);
+		Assert.assertTrue("allPlayers.size() !> 0", allPlayers.size() > 0);
 	}
 	
 	@Test
@@ -84,5 +88,32 @@ public class PlayerDaoTest {
 	public void getPlayer_returnsPrevLosses() {
 		Player player = playerDao.getPlayer(1);
 		Assert.assertEquals("prevLosses", 4, player.getPrevLosses());
+	}
+	
+//	@Test
+//	public void getPlayer_returnsCategories() {
+//		Category expectedCategory = categoryDao.getCategory(1);
+//		Player player = playerDao.getPlayer(14);
+//		Assert.assertTrue("categories", player.getCategories().contains(expectedCategory));
+//	}
+	
+	@Test
+	public void clearPlayerCache_evictsPlayerEntitiesFromSessionCache() {
+		long start;
+		long stop;
+		
+		playerDao.clearPlayerCache();
+		
+		start = System.currentTimeMillis();
+		playerDao.getPlayer(1);
+		stop = System.currentTimeMillis();
+		long baseQueryTime = stop-start;
+		
+		start = System.currentTimeMillis();
+		playerDao.getPlayer(1);
+		stop = System.currentTimeMillis();
+		long cachedQueryTime = stop-start;
+		
+		Assert.assertTrue("caching should reduce query time: "+cachedQueryTime+" !< "+baseQueryTime, cachedQueryTime < baseQueryTime);
 	}
 }
