@@ -19,8 +19,20 @@ public class CategoryDaoTest {
 	private CategoryDao categoryDao;
 	
 	@Test
-	public void getCategories_returnsAllCategories() {
-		List<Category> allCategories = categoryDao.getCategories();
-		Assert.assertTrue("getCategories returns categories", allCategories.size() > 0);
+	public void getAllCategories_returnsCategories() {
+		List<Category> allCategories = categoryDao.getAllCategories();
+		Assert.assertTrue("allCategories", allCategories.size() > 0);
+	}
+	
+	@Test
+	public void getCategory_returnsId() {
+		Category category = categoryDao.getCategory(1);
+		Assert.assertEquals("id", 1, category.getId());
+	}
+	
+	@Test
+	public void getCategory_returnsName() {
+		Category category = categoryDao.getCategory(1);
+		Assert.assertEquals("name", "Cardinal Solutions", category.getName());
 	}
 }

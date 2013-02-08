@@ -24,13 +24,13 @@ public class ServiceController {
 
 	@RequestMapping(method=RequestMethod.GET, value={"/services/games"})
 	public @ResponseBody List<Game> getGames() {
-		List<Game> allGames = gameDao.getGames();
+		List<Game> allGames = gameDao.getAllGames();
 		return allGames;
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value={"/services/players"})
 	public @ResponseBody List<Player> getPlayers() {
-		List<Player> allPlayers = playerDao.getPlayers();
+		List<Player> allPlayers = playerDao.getAllPlayers();
 		return allPlayers;
 	}
 }

@@ -23,8 +23,13 @@ public class CategoryDao {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Category> getCategories() {
+	public List<Category> getAllCategories() {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Category.class);
 		return (List<Category>) criteria.list();
+	}
+	
+	public Category getCategory(int id) {
+		Object category = sessionFactory.getCurrentSession().get(Category.class, id);
+		return (Category) category;
 	}
 }

@@ -2,9 +2,12 @@ package com.wesandrachel.model.dao;
 
 import com.wesandrachel.model.domain.Game;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.junit.Test;
@@ -22,9 +25,56 @@ public class GameDaoTest {
 	
 	@Test
 	@Ignore("unit test takes >1min to return all games")
-	public void getGames_returnsAllGames() {
-		List<Game> allGames = gameDao.getGames();
-		Assert.assertTrue("getGames returns games", allGames.size() > 0);
+	public void getAllGames_returnsGames() {
+		List<Game> allGames = gameDao.getAllGames();
+		Assert.assertTrue("allGames", allGames.size() > 0);
+	}
+	
+	@Test
+	public void getGame_returnsId() {
+		Game game = gameDao.getGame(1);
+		Assert.assertEquals("id", 1, game.getId());
+	}
+	
+	@Test
+	public void getGame_returnsDate() {
+		Calendar expectedDate = Calendar.getInstance();
+		expectedDate.set(2006, 8-1, 19, 0, 0, 0);
+		expectedDate.set(Calendar.MILLISECOND, 0);
+		//expectedDate.setTimeInMillis(1155960000000L);
+		
+		Game game = gameDao.getGame(1);
+		Assert.assertEquals("date", expectedDate.getTimeInMillis(), game.getDate().getTime());
+	}
+	
+	@Test
+	public void getGame_returnsWinner1() {
+		Game game = gameDao.getGame(1);
+		Assert.assertEquals("winner1", 80, game.getWinner1().getId());
+	}
+	
+	@Test
+	public void getGame_returnsWinner2() {
+		Game game = gameDao.getGame(1);
+		Assert.assertEquals("winner2", 79, game.getWinner2().getId());
+	}
+	
+	@Test
+	public void getGame_returnsLoser1() {
+		Game game = gameDao.getGame(1);
+		Assert.assertEquals("loser1", 84, game.getLoser1().getId());
+	}
+	
+	@Test
+	public void getGame_returnsLoser2() {
+		Game game = gameDao.getGame(1);
+		Assert.assertEquals("loser2", 90, game.getLoser2().getId());
+	}
+	
+	@Test
+	public void getGame_returnsShutout() {
+		Game game = gameDao.getGame(1);
+		Assert.assertEquals("shutout", true, game.getShutout());
 	}
 	
 //	@Test

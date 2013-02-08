@@ -24,9 +24,14 @@ public class GameDao {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Game> getGames() {
+	public List<Game> getAllGames() {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Game.class);
 		return (List<Game>) criteria.list();
+	}
+	
+	public Game getGame(int id) {
+		Object game = sessionFactory.getCurrentSession().get(Game.class, id);
+		return (Game) game;
 	}
 	
 //	@SuppressWarnings("unchecked")

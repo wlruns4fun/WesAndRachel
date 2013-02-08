@@ -23,8 +23,13 @@ public class PlayerDao {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Player> getPlayers() {
+	public List<Player> getAllPlayers() {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Player.class);
 		return (List<Player>) criteria.list();
+	}
+	
+	public Player getPlayer(int id) {
+		Object player = sessionFactory.getCurrentSession().get(Player.class, id);
+		return (Player) player;
 	}
 }

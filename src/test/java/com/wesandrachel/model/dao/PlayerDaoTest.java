@@ -5,6 +5,7 @@ import com.wesandrachel.model.domain.Player;
 import java.util.List;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.junit.Test;
 
@@ -20,8 +21,68 @@ public class PlayerDaoTest {
 	private PlayerDao playerDao;
 	
 	@Test
-	public void getPlayers_returnsPlayers() {
-		List<Player> allPlayers = playerDao.getPlayers();
-		Assert.assertTrue("getPlayers returns players", allPlayers.size() > 0);
+	public void getAllPlayers_returnsPlayers() {
+		List<Player> allPlayers = playerDao.getAllPlayers();
+		Assert.assertTrue("allPlayers", allPlayers.size() > 0);
+	}
+	
+	@Test
+	public void getPlayer_returnsId() {
+		Player player = playerDao.getPlayer(1);
+		Assert.assertEquals("id", 1, player.getId());
+	}
+	
+	@Test
+	public void getPlayer_returnsLastName() {
+		Player player = playerDao.getPlayer(1);
+		Assert.assertEquals("lastName", "Abrams", player.getLastName());
+	}
+	
+	@Test
+	public void getPlayer_returnsFirstName() {
+		Player player = playerDao.getPlayer(1);
+		Assert.assertEquals("firstName", "Chad", player.getFirstName());
+	}
+	
+	@Test
+	public void getPlayer_returnsEloRating() {
+		Player player = playerDao.getPlayer(1);
+		Assert.assertEquals("eloRating", 1980, player.getEloRating());
+	}
+	
+	@Test
+	public void getPlayer_returnsDoublesWins() {
+		Player player = playerDao.getPlayer(1);
+		Assert.assertEquals("doublesWins", 0, player.getDoublesWins());
+	}
+	
+	@Test
+	public void getPlayer_returnsDoublesLosses() {
+		Player player = playerDao.getPlayer(1);
+		Assert.assertEquals("doublesLosses", 2, player.getDoublesLosses());
+	}
+	
+	@Test
+	public void getPlayer_returnsSinglesWins() {
+		Player player = playerDao.getPlayer(1);
+		Assert.assertEquals("singlesWins", 0, player.getSinglesWins());
+	}
+	
+	@Test
+	public void getPlayer_returnsSinglesLosses() {
+		Player player = playerDao.getPlayer(1);
+		Assert.assertEquals("singlesLosses", 0, player.getSinglesLosses());
+	}
+	
+	@Test
+	public void getPlayer_returnsPrevWins() {
+		Player player = playerDao.getPlayer(1);
+		Assert.assertEquals("prevWins", 2, player.getPrevWins());
+	}
+	
+	@Test
+	public void getPlayer_returnsPrevLosses() {
+		Player player = playerDao.getPlayer(1);
+		Assert.assertEquals("prevLosses", 4, player.getPrevLosses());
 	}
 }

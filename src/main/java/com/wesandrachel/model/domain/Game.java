@@ -3,24 +3,25 @@ package com.wesandrachel.model.domain;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
-@Entity
-@Table(name="FOOSBALL_HISTORY")
+@Entity @Table(name="FOOSBALL_HISTORY")
+@Cacheable @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
 public class Game implements Serializable {
 
-	private int gameId;
+	private int id;
 	private Date date;
 	private Player winner1;
 	private Player winner2;
@@ -31,12 +32,12 @@ public class Game implements Serializable {
 	@Id
 	@GeneratedValue
 	@Column(name="GAME_ID", nullable=false)
-	public int getGameId() {
-		return gameId;
+	public int getId() {
+		return id;
 	}
 	
-	public void setGameId(int gameId) {
-		this.gameId = gameId;
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	@Column(name="DATE", nullable=false)
@@ -48,7 +49,7 @@ public class Game implements Serializable {
 		this.date = date;
 	}
 	
-	@ManyToOne(targetEntity=Player.class)
+	@ManyToOne
 	@JoinColumn(name="WINNER_1", referencedColumnName="PLAYER_ID")
 	public Player getWinner1() {
 		return winner1;
@@ -58,37 +59,37 @@ public class Game implements Serializable {
 		this.winner1 = winner1;
 	}
 	
-//	@ManyToOne(targetEntity=Player.class)
-//	@JoinColumn(name="WINNER_2", referencedColumnName="PLAYER_ID")
-//	@NotFound(action=NotFoundAction.IGNORE)
-//	public Player getWinner2() {
-//		return winner2;
-//	}
-//	
-//	public void setWinner2(Player winner2) {
-//		this.winner2 = winner2;
-//	}
-//
-//	@ManyToOne(targetEntity=Player.class)
-//	@JoinColumn(name="LOSER_1", referencedColumnName="PLAYER_ID")
-//	public Player getLoser1() {
-//		return loser1;
-//	}
-//	
-//	public void setLoser1(Player loser1) {
-//		this.loser1 = loser1;
-//	}
-//	
-//	@ManyToOne(targetEntity=Player.class)
-//	@JoinColumn(name="LOSER_2", referencedColumnName="PLAYER_ID")
-//	@NotFound(action=NotFoundAction.IGNORE)
-//	public Player getLoser2() {
-//		return loser2;
-//	}
-//	
-//	public void setLoser2(Player loser2) {
-//		this.loser2 = loser2;
-//	}
+	@ManyToOne
+	@JoinColumn(name="WINNER_2", referencedColumnName="PLAYER_ID")
+	@NotFound(action=NotFoundAction.IGNORE)
+	public Player getWinner2() {
+		return winner2;
+	}
+	
+	public void setWinner2(Player winner2) {
+		this.winner2 = winner2;
+	}
+
+	@ManyToOne
+	@JoinColumn(name="LOSER_1", referencedColumnName="PLAYER_ID")
+	public Player getLoser1() {
+		return loser1;
+	}
+	
+	public void setLoser1(Player loser1) {
+		this.loser1 = loser1;
+	}
+	
+	@ManyToOne
+	@JoinColumn(name="LOSER_2", referencedColumnName="PLAYER_ID")
+	@NotFound(action=NotFoundAction.IGNORE)
+	public Player getLoser2() {
+		return loser2;
+	}
+	
+	public void setLoser2(Player loser2) {
+		this.loser2 = loser2;
+	}
 	
 	@Column(name="SHUTOUT")
 	public boolean getShutout() {
