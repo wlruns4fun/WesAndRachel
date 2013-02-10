@@ -4,12 +4,15 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Cacheable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cache;
@@ -33,8 +36,7 @@ public class Player implements Serializable {
 	private int prevLosses = 0;
 	private List<Category> categories;
 	
-	@Id
-	@GeneratedValue
+	@Id @GeneratedValue
 	@Column(name="PLAYER_ID", nullable=false)
 	public int getId() {
 		return id;
@@ -125,8 +127,10 @@ public class Player implements Serializable {
 		this.prevLosses = prevLosses;
 	}
 	
-	@OneToMany
-	@JoinColumn(name="CATEGORY_ID")
+	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinTable(name="FOOSBALL_PLAYER_CATEGORIES", 
+		joinColumns={@JoinColumn(name="PLAYER_ID")},
+		inverseJoinColumns={@JoinColumn(name="CATEGORY_ID")})
 	public List<Category> getCategories() {
 		return categories;
 	}

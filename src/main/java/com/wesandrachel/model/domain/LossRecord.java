@@ -17,22 +17,21 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
-@Entity @Table(name="FOOSBALL_HISTORY")
+@Entity @Table(name="FOOSBALL_LOSS_RECORDS")
 @Cacheable @Cache(usage=CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Game implements Serializable {
+public class LossRecord implements Serializable {
 
-	private static final long serialVersionUID = -4633351524563529317L;
+	private static final long serialVersionUID = 2063531637815212570L;
 	
 	private int id;
-	private Date date;
-	private Player winner1;
-	private Player winner2;
+	private int count;
 	private Player loser1;
 	private Player loser2;
-	private boolean shutout;
+	private Date startDate;
+	private Date endDate;
 	
 	@Id @GeneratedValue
-	@Column(name="GAME_ID", nullable=false)
+	@Column(name="LOSS_RECORD_ID")
 	public int getId() {
 		return id;
 	}
@@ -41,36 +40,15 @@ public class Game implements Serializable {
 		this.id = id;
 	}
 	
-	@Column(name="DATE", nullable=false)
-	public Date getDate() {
-		return date;
+	@Column(name="LOSS_COUNT")
+	public int getCount() {
+		return count;
 	}
 	
-	public void setDate(Date date) {
-		this.date = date;
+	public void setCount(int count) {
+		this.count = count;
 	}
 	
-	@ManyToOne
-	@JoinColumn(name="WINNER_1", referencedColumnName="PLAYER_ID")
-	public Player getWinner1() {
-		return winner1;
-	}
-	
-	public void setWinner1(Player winner1) {
-		this.winner1 = winner1;
-	}
-	
-	@ManyToOne
-	@JoinColumn(name="WINNER_2", referencedColumnName="PLAYER_ID")
-	@NotFound(action=NotFoundAction.IGNORE)
-	public Player getWinner2() {
-		return winner2;
-	}
-	
-	public void setWinner2(Player winner2) {
-		this.winner2 = winner2;
-	}
-
 	@ManyToOne
 	@JoinColumn(name="LOSER_1", referencedColumnName="PLAYER_ID")
 	public Player getLoser1() {
@@ -92,12 +70,21 @@ public class Game implements Serializable {
 		this.loser2 = loser2;
 	}
 	
-	@Column(name="SHUTOUT")
-	public boolean getShutout() {
-		return shutout;
+	@Column(name="START_DATE")
+	public Date getStartDate() {
+		return startDate;
 	}
 	
-	public void setShutout(boolean shutout) {
-		this.shutout = shutout;
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+	
+	@Column(name="END_DATE")
+	public Date getEndDate() {
+		return endDate;
+	}
+	
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 }
