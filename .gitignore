@@ -1,9 +1,11 @@
+target/
+config.properties
+.idea/
+
 #################
 ## Eclipse
 #################
 
-target/
-config.properties
 *.pydevproject
 .project
 .metadata

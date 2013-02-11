@@ -10,7 +10,7 @@ public class ViewController {
 	
 	@RequestMapping(method=RequestMethod.GET, value={"/", "/test"})
 	public ModelAndView getWelcomeView() {
-		return new ModelAndView("WelcomeView");
+		return new ModelAndView("HomeView");
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value={"/foosball/", "/foosball/players"})
