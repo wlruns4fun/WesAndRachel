@@ -12,4 +12,9 @@ public class ViewController {
 	public ModelAndView getWelcomeView() {
 		return new ModelAndView("WelcomeView");
 	}
+	
+	@RequestMapping(method=RequestMethod.GET, value={"/foosball/", "/foosball/players"})
+	public ModelAndView getPlayerView() {
+		return new ModelAndView("PlayerView");
+	}
 }

@@ -33,31 +33,31 @@ public class ServiceController {
 	@Autowired
 	private RecordDao recordDao;
 
-	@RequestMapping(method=RequestMethod.GET, value={"/services/categories"})
+	@RequestMapping(method=RequestMethod.GET, value={"/foosball/services/categories"})
 	public @ResponseBody List<Category> getCategories() {
 		List<Category> allCategories = categoryDao.getAllCategories();
 		return allCategories;
 	}
 	
-	@RequestMapping(method=RequestMethod.GET, value={"/services/games"})
+	@RequestMapping(method=RequestMethod.GET, value={"/foosball/services/games"})
 	public @ResponseBody List<Game> getGames() {
 		List<Game> allGames = gameDao.getAllGames();
 		return allGames;
 	}
 	
-	@RequestMapping(method=RequestMethod.GET, value={"/services/players"})
-	public @ResponseBody List<Player> getPlayers() {
-		List<Player> allPlayers = playerDao.getAllPlayers();
-		return allPlayers;
-	}
-	
-	@RequestMapping(method=RequestMethod.GET, value={"/services/lossRecords"})
+	@RequestMapping(method=RequestMethod.GET, value={"/foosball/services/lossRecords"})
 	public @ResponseBody List<LossRecord> getAllLossRecords() {
 		List<LossRecord> allLossRecords = recordDao.getAllLossRecords();
 		return allLossRecords;
 	}
 	
-	@RequestMapping(method=RequestMethod.GET, value={"/services/winRecords"})
+	@RequestMapping(method=RequestMethod.GET, value={"/foosball/services/players"})
+	public @ResponseBody List<Player> getPlayers() {
+		List<Player> allPlayers = playerDao.getAllPlayers();
+		return allPlayers;
+	}
+	
+	@RequestMapping(method=RequestMethod.GET, value={"/foosball/services/winRecords"})
 	public @ResponseBody List<WinRecord> getAllWinRecords() {
 		List<WinRecord> allWinRecords = recordDao.getAllWinRecords();
 		return allWinRecords;
