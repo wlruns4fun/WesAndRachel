@@ -15,6 +15,6 @@ public class ViewController {
 	
 	@RequestMapping(method=RequestMethod.GET, value={"/foosball/", "/foosball/players"})
 	public ModelAndView getPlayerView() {
-		return new ModelAndView("PlayerView");
+		return new ModelAndView("PlayersView");
 	}
 }

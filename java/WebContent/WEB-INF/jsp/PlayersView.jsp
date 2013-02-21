@@ -12,7 +12,7 @@
 <div data-role="page">
 
 	<div data-role="header">
-		<h1>Foosball Players</h1>
+		<h1 id="pageHeader">Player Rankings</h1>
 	</div>
 
 	<div data-role="content">	

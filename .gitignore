@@ -1,6 +1,7 @@
 target/
 config.properties
 .idea/
+*.log
 
 #################
 ## Eclipse
