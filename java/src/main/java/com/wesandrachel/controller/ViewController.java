@@ -8,12 +8,12 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ViewController {
 	
-	@RequestMapping(method=RequestMethod.GET, value={"/", "/test"})
+	@RequestMapping(method=RequestMethod.GET, value={"/"})
 	public ModelAndView getWelcomeView() {
 		return new ModelAndView("HomeView");
 	}
 	
-	@RequestMapping(method=RequestMethod.GET, value={"/foosball/", "/foosball/players"})
+	@RequestMapping(method=RequestMethod.GET, value={"/foosball", "/foosball/players"})
 	public ModelAndView getPlayerView() {
 		return new ModelAndView("PlayersView");
 	}

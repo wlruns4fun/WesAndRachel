@@ -1,12 +1,18 @@
-require_relative '../../lib/players_page'
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '../../', 'lib'))
+
+require 'players_page'
 
 When /^I go to the Players page$/ do
   @players_page = PlayersPage.new(@browser)
   @players_page.goto
 end
 
-When /^the page header says "([^"]*)"$/ do |text|
-  @players_page.page_header_element.when_present do
-    @players_page.page_header.should == text
+Then /^the page header says "([^"]*)"$/ do |text|
+  @players_page.page_header.should == text
+end
+
+Then /^I see a list of all the players$/ do
+  @players_page.players_list_element.wait_until do
+    @players_page.players_list_element.items > 0
   end
 end
