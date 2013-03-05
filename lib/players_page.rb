@@ -1,8 +1,8 @@
 class PlayersPage
   include PageObject
 
-    page_url $domain + '/foosball/players'
+    page_url $ENV + '/foosball/players'
 
-    h1 :page_header, :id => 'pageHeader'
+    h1 :header, :id => 'header'
     ordered_list :players_list, :id => 'playersList'
 end

@@ -8,7 +8,7 @@ When /^I go to the Players page$/ do
 end
 
 Then /^the page header says "([^"]*)"$/ do |text|
-  @players_page.page_header.should == text
+  @players_page.header.should == text
 end
 
 Then /^I see a list of all the players$/ do

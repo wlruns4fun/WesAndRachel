@@ -1,7 +1,9 @@
 require 'page-object'
 require 'watir-webdriver'
 
-$domain = 'http://localhost:8080/WesAndRachel'
+$LOCAL = 'http://localhost:8080/WesAndRachel'
+$PROD = 'http://wesandrachel.com'
+$ENV = $LOCAL
 
 Before do
   @browser = Watir::Browser.new :chrome

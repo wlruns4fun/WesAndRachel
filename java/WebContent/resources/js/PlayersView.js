@@ -6,12 +6,13 @@ function PlayersView() {
 			playersList += "<li>" + player.lastName + "</li>";
 		});
 		
-		$("#playersList").html(playersList).listview("refresh");
+		$("#playersList").html(playersList);
+		utils.refreshListview($("#playersList"));
 	};
 };
 
 var playersView = new PlayersView();
 
-$(document).ready(function() {
+$(document).live("pageinit", function(event) {
 	playersController.getPlayers(playersView.populatePlayersList);
 });
