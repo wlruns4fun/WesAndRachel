@@ -7,12 +7,13 @@
 	
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
 	
-	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
 	
 	<script src="<spring:url value='/resources/js/globalVars.js'/>"></script>
 	<script src="<spring:url value='/resources/js/Utils.js'/>"></script>
 	<script src="<spring:url value='/resources/js/PlayersController.js'/>"></script>
+	<script src="<spring:url value='/resources/js/PlayersModel.js'/>"></script>
 	<script src="<spring:url value='/resources/js/PlayersView.js'/>"></script>
 </head> 
 <body> 
@@ -25,7 +26,8 @@
 	
 		<div data-role="content">	
 			<div class="content-primary">
-				<ol id="playersList" data-role="listview"></ol>
+				<ul id="playersList" data-role="listview"
+					data-filter="true" data-filter-placeholder="Search..."></ul>
 			</div>		
 		</div>
 	

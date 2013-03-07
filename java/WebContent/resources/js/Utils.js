@@ -1,7 +1,17 @@
 function Utils() {
 
 	this.refreshListview = function(list) {
-		list.listview("refresh");
+		if (list != null) {
+			list.listview("refresh");
+		}
+	};
+	
+	this.showLoadingWidget = function() {
+		$.mobile.loading("show");
+	};
+	
+	this.hideLoadingWidget = function() {
+		$.mobile.loading("hide");
 	};
 };
 

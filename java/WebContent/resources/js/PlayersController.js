@@ -4,6 +4,7 @@ function PlayersController() {
 	
 	this.getPlayers = function(onSuccessCallback) {
 		$.getJSON(this.playersService, onSuccessCallback);
+		utils.showLoadingWidget();
 	};
 };
 
