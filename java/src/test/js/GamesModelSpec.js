@@ -1,0 +1,3 @@
+describe("GamesModel", function() {
+	
+});

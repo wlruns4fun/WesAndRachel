@@ -5,7 +5,6 @@ describe("PlayersController", function() {
 
 		it("calls ajax request to get Players data", function() {
 			spyOn($, "getJSON");
-			spyOn(utils, "showLoadingWidget");
 			
 			playersController.getPlayers(doNothing);
 			

@@ -7,7 +7,7 @@ When /^I go to the Players page$/ do
   @players_page.goto
 end
 
-Then /^the page header says "([^"]*)"$/ do |text|
+Then /^the Players page header says "([^"]*)"$/ do |text|
   pageHeader = @players_page.header
   fail('The page header says \''+pageHeader+'\' instead of \''+text+'\'') unless(pageHeader.eql? text)
 end
@@ -46,7 +46,7 @@ Then /^the list contains each player's categories$/ do
   fail('\'Categories\' do not exist') unless(!@players_page.categories.nil?)
 end
 
-Then /^I see the search filter$/ do
+Then /^I see the Players search filter$/ do
   fail('The search filter does not exist') unless(!@players_page.search_filter_element.nil?)
 end
 

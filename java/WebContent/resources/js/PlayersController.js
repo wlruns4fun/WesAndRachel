@@ -3,7 +3,7 @@ function PlayersController() {
 	this.playersService = $ENV + "/foosball/services/players";
 	
 	this.getPlayers = function(onSuccessCallback) {
-		$.getJSON(this.playersService, onSuccessCallback);
+		$.getJSON(playersController.playersService, onSuccessCallback);
 	};
 };
 

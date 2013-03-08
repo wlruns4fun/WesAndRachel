@@ -1,6 +1,8 @@
 describe("PlayersModel", function() {
 	
 	var player = {
+		firstName: "firstName",
+		lastName: "lastName",
 		doublesWins: 1,
 		doublesLosses: 2,
 		singlesWins: 3,
@@ -45,6 +47,17 @@ describe("PlayersModel", function() {
 			var categoriesNames = playersModel.getCategoriesNames(player);
 			
 			expect(categoriesNames).toEqual(expectedCategoriesNames);
+		});
+	});
+	
+	describe(".getFullName(player)", function() {
+		
+		it("returns the full name of the Player", function() {
+			var expectedFullName = player.firstName + " " + player.lastName;
+			
+			var fullName = playersModel.getFullName(player);
+			
+			expect(fullName).toBe(expectedFullName);
 		});
 	});
 });

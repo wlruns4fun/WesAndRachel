@@ -80,7 +80,7 @@ describe("PlayersView", function() {
 			affix("#playersList");
 		});
 		
-		it("sorts Players by decreasing Elo rating, then by decreasing total number of games", function() {
+		it("sorts Players data", function() {
 			spyOn(playersData, "sort");
 			spyOn(utils, "refreshListview");
 			

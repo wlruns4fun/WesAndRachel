@@ -42,6 +42,15 @@ function PlayersModel() {
 		
 		return categoriesNames;
 	};
+	
+	this.getFullName = function(player) {
+		var fullName = "";
+		if (player != null) {
+			fullName = player.firstName + " " + player.lastName;
+		}
+		
+		return fullName;
+	};
 };
 
 var playersModel = new PlayersModel();

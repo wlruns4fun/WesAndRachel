@@ -2,13 +2,14 @@
 Feature: Player Rankings
 #==============================================================================
 
+
   Scenario: View the Player Rankings page
   #============================================================================
     When I go to the Players page
-    Then the page header says "Player Rankings"
+    Then the Players page header says "Player Rankings"
 
 
-  Scenario: View list of players
+  Scenario: View list of Players
   #============================================================================
     When I go to the Players page
     Then I see a list of all the players
@@ -31,7 +32,7 @@ Feature: Player Rankings
   #============================================================================
     Given I go to the Players page
       And I see a list of all the players
-      And I see the search filter
+      And I see the Players search filter
       And I see "Rachel" in the search results
     When I enter "Wes" in the search filter
     Then I see "Wes" in the search results
@@ -42,7 +43,7 @@ Feature: Player Rankings
   #============================================================================
     Given I go to the Players page
       And I see a list of all the players
-      And I see the search filter
+      And I see the Players search filter
       And I see "Rachel Lewis" in the search results
     When I enter "Cardinal Solutions" in the search filter
     Then I see "Wes Lewis" in the search results
