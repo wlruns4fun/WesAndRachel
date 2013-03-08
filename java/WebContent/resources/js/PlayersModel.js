@@ -29,6 +29,19 @@ function PlayersModel() {
 		
 		return totalNumLosses;
 	};
+	
+	this.getCategoriesNames = function(player) {
+		var categoriesNames = "";
+		var categories = player.categories;
+		for (var i=0; i<categories.length; i++) {
+			categoriesNames += categories[i].name;
+			if (i < categories.length-1) {
+				categoriesNames += " ";
+			}
+		}
+		
+		return categoriesNames;
+	};
 };
 
 var playersModel = new PlayersModel();

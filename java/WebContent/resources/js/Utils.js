@@ -16,3 +16,11 @@ function Utils() {
 };
 
 var utils = new Utils();
+
+$(document).ajaxStart(function() {
+	utils.showLoadingWidget();
+});
+
+$(document).ajaxStop(function() {
+	utils.hideLoadingWidget();
+});

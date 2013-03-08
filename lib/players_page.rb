@@ -12,4 +12,5 @@ class PlayersPage
     span :total_wins, :name => 'totalWins'
     span :total_losses, :name => 'totalLosses'
     span :elo_rating, :name => 'eloRating'
+    span :categories, :name => 'categories'
 end

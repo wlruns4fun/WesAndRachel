@@ -18,15 +18,16 @@ Feature: Player Rankings
   #============================================================================
     Given I go to the Players page
     When I see a list of all the players
-    Then I see each player's rank
-      And I see each player's first name
-      And I see each player's last name
-      And I see each player's total wins
-      And I see each player's total losses
-      And I see each player's Elo rating
+    Then the list contains each player's rank
+      And the list contains each player's first name
+      And the list contains each player's last name
+      And the list contains each player's total wins
+      And the list contains each player's total losses
+      And the list contains each player's Elo rating
+      And the list contains each player's categories
 
 
-  Scenario: Search Players
+  Scenario: Search Players by name
   #============================================================================
     Given I go to the Players page
       And I see a list of all the players
@@ -35,3 +36,14 @@ Feature: Player Rankings
     When I enter "Wes" in the search filter
     Then I see "Wes" in the search results
       And I do not see "Rachel" in the search results
+
+
+  Scenario: Search Players by category
+  #============================================================================
+    Given I go to the Players page
+      And I see a list of all the players
+      And I see the search filter
+      And I see "Rachel Lewis" in the search results
+    When I enter "Cardinal Solutions" in the search filter
+    Then I see "Wes Lewis" in the search results
+      And I do not see "Rachel Lewis" in the search results

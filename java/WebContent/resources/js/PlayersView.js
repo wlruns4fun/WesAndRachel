@@ -28,23 +28,18 @@ function PlayersView() {
 		var playersList = "";
 		$.each(data, function(index, player) {
 			playersList += "<li>";
-			playersList += "<span name='rank'>" + (index+1) + ".</span>";
-			playersList += " ";
-			playersList += "<span name='firstName'>" + player.firstName + "</span> ";
-			playersList += " ";
-			playersList += "<span name='lastName'>" + player.lastName + "</span>";
-			playersList += " (";
-			playersList += "<span name='totalWins'>" + playersModel.getTotalNumWins(player) + "</span>";
-			playersList += "-";
-			playersList += "<span name='totalLosses'>" + playersModel.getTotalNumLosses(player) + "</span>";
-			playersList += ")";
+			playersList += "<span name='rank'>" + (index+1) + ".</span>" + " ";
+			playersList += "<span name='firstName'>" + player.firstName + "</span>" + " ";
+			playersList += "<span name='lastName'>" + player.lastName + "</span>" + " (";
+			playersList += "<span name='totalWins'>" + playersModel.getTotalNumWins(player) + "</span>" + "-";
+			playersList += "<span name='totalLosses'>" + playersModel.getTotalNumLosses(player) + "</span>" + ")";
 			playersList += "<span name='eloRating' class='ui-li-count'>" + player.eloRating + "</span>";
+			playersList += "<span name='categories' class='hidden'>" + playersModel.getCategoriesNames(player) + "</span>";
 			playersList += "</li>";
 		});
 		
 		$("#playersList").html(playersList);
 		utils.refreshListview($("#playersList"));
-		utils.hideLoadingWidget();
 	};
 };
 

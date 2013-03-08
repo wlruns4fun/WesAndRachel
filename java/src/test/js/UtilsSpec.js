@@ -1,6 +1,6 @@
-describe("Utils:", function() {
+describe("Utils", function() {
 	
-	describe("refreshListview(list):", function() {
+	describe(".refreshListview(list)", function() {
 		
 		it("refreshes the listview of the corresponding list object", function() {
 			affix("#list");
@@ -14,7 +14,7 @@ describe("Utils:", function() {
 		});
 	});
 	
-	describe("showLoadingWidget():", function() {
+	describe(".showLoadingWidget()", function() {
 		
 		it("shows the loading widget", function() {
 			spyOn($.mobile, "loading");
@@ -25,7 +25,7 @@ describe("Utils:", function() {
 		});
 	});
 	
-	describe("hideLoadingWidget():", function() {
+	describe(".hideLoadingWidget()", function() {
 		
 		it("hides the loading widget", function() {
 			spyOn($.mobile, "loading");

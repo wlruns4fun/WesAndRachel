@@ -5,13 +5,9 @@
 	<title>Player Rankings</title> 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
+	<%@include file="/resources/include/jqueryMobile.html"%>
+	<%@include file="/resources/include/common.html"%>
 	
-	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
-	
-	<script src="<spring:url value='/resources/js/globalVars.js'/>"></script>
-	<script src="<spring:url value='/resources/js/Utils.js'/>"></script>
 	<script src="<spring:url value='/resources/js/PlayersController.js'/>"></script>
 	<script src="<spring:url value='/resources/js/PlayersModel.js'/>"></script>
 	<script src="<spring:url value='/resources/js/PlayersView.js'/>"></script>
