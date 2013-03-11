@@ -16,6 +16,7 @@ function GamesView() {
 			if (game.loser2 != null) {
 				gamesList += "/<span name='loser2'>" + playersModel.getFullName(game.loser2) + "</span>";
 			}
+			gamesList += " <span name='shutout'>" + game.shutout + "</span>";
 			gamesList += "</li>";
 		});
 		

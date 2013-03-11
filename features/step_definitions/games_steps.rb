@@ -31,3 +31,7 @@ Then /^the list contains each game's losers$/ do
   fail('\'Loser1\' does not exist') unless(!@games_page.loser1.nil?)
   fail('\'Loser2\' does not exist') unless(!@games_page.loser2.nil?)
 end
+
+Then /^the list contains each game's shutout status$/ do
+  fail('\'Shutout\' does not exist') unless(!@games_page.shutout.nil?)
+end

@@ -23,3 +23,4 @@ Feature: Game History
     Then the list contains each game's date
       And the list contains each game's winners
       And the list contains each game's losers
+      And the list contains each game's shutout status

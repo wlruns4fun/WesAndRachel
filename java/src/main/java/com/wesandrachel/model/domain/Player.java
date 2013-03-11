@@ -127,8 +127,8 @@ public class Player implements Serializable {
 		this.prevLosses = prevLosses;
 	}
 	
-	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinTable(name="FOOSBALL_PLAYER_CATEGORIES", 
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(name="FOOSBALL_PLAYER_CATEGORIES",
 		joinColumns={@JoinColumn(name="PLAYER_ID")},
 		inverseJoinColumns={@JoinColumn(name="CATEGORY_ID")})
 	public List<Category> getCategories() {

@@ -25,7 +25,7 @@ public class GameDaoTest {
 	private PlayerDao playerDao;
 	
 	@Test
-	@Ignore("unit test takes >1min to return all games #WTF!")
+//	@Ignore("unit test takes >1min to return all games #WTF!")
 	public void getAllGames_returnsGames() {
 		List<Game> allGames = gameDao.getAllGames();
 		Assert.assertTrue("allGames.size(): "+allGames.size(), allGames.size() > 0);
@@ -42,7 +42,6 @@ public class GameDaoTest {
 		Calendar expectedDate = Calendar.getInstance();
 		expectedDate.set(2006, 8-1, 19, 0, 0, 0);
 		expectedDate.set(Calendar.MILLISECOND, 0);
-		//expectedDate.setTimeInMillis(1155960000000L);
 		
 		Game game = gameDao.getGame(1);
 		Assert.assertEquals("date", expectedDate.getTimeInMillis(), game.getDate().getTime());

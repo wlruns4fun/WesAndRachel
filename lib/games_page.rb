@@ -11,4 +11,5 @@ class GamesPage
     span :winner2, :name => 'winner2'
     span :loser1, :name => 'loser1'
     span :loser2, :name => 'loser2'
+    span :shutout, :name => 'shutout'
 end
