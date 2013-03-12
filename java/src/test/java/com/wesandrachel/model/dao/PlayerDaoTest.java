@@ -94,7 +94,7 @@ public class PlayerDaoTest {
 	}
 	
 	@Test
-	@Ignore("still experiencing performance issues")
+	@Ignore("inconsistent cache test results")
 	public void clearPlayerCache_evictsPlayerEntitiesFromSessionCache() {
 		long start;
 		long stop;

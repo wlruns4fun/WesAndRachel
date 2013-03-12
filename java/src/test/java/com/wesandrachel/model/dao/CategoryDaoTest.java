@@ -1,7 +1,6 @@
 package com.wesandrachel.model.dao;
 
 import com.wesandrachel.model.domain.Category;
-import com.wesandrachel.model.domain.Player;
 
 import java.util.List;
 
@@ -42,7 +41,7 @@ public class CategoryDaoTest {
 	}
 	
 	@Test
-	@Ignore("still experiencing performance issues")
+	@Ignore("inconsistent cache test results")
 	public void clearCategoryCache_evictsCategoryEntitiesFromSessionCache() {
 		long start;
 		long stop;

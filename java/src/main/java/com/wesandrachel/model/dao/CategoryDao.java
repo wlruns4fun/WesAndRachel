@@ -25,6 +25,7 @@ public class CategoryDao {
 	@SuppressWarnings("unchecked")
 	public List<Category> getAllCategories() {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Category.class);
+		criteria.setCacheable(true);
 		return (List<Category>) criteria.list();
 	}
 	

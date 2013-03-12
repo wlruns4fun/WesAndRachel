@@ -16,6 +16,9 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.wesandrachel.model.dao.PlayerDao;
 
 @Entity @Table(name="FOOSBALL_HISTORY")
 @Cacheable @Cache(usage=CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -25,10 +28,14 @@ public class Game implements Serializable {
 	
 	private int id;
 	private Date date;
-	private Player winner1;
-	private Player winner2;
-	private Player loser1;
-	private Player loser2;
+//	private Player winner1;
+//	private Player winner2;
+//	private Player loser1;
+//	private Player loser2;
+	private Integer winner1;
+	private Integer winner2;
+	private Integer loser1;
+	private Integer loser2;
 	private boolean shutout;
 	
 	@Id @GeneratedValue
@@ -50,45 +57,81 @@ public class Game implements Serializable {
 		this.date = date;
 	}
 	
-	@ManyToOne
-	@JoinColumn(name="WINNER_1", referencedColumnName="PLAYER_ID")
-	public Player getWinner1() {
+//	@ManyToOne
+//	@JoinColumn(name="WINNER_1", referencedColumnName="PLAYER_ID")
+//	public Player getWinner1() {
+//		return winner1;
+//	}
+//	
+//	public void setWinner1(Player winner1) {
+//		this.winner1 = winner1;
+//	}
+//	
+//	@ManyToOne
+//	@JoinColumn(name="WINNER_2", referencedColumnName="PLAYER_ID")
+//	@NotFound(action=NotFoundAction.IGNORE)
+//	public Player getWinner2() {
+//		return winner2;
+//	}
+//	
+//	public void setWinner2(Player winner2) {
+//		this.winner2 = winner2;
+//	}
+//
+//	@ManyToOne
+//	@JoinColumn(name="LOSER_1", referencedColumnName="PLAYER_ID")
+//	public Player getLoser1() {
+//		return loser1;
+//	}
+//	
+//	public void setLoser1(Player loser1) {
+//		this.loser1 = loser1;
+//	}
+//	
+//	@ManyToOne
+//	@JoinColumn(name="LOSER_2", referencedColumnName="PLAYER_ID")
+//	@NotFound(action=NotFoundAction.IGNORE)
+//	public Player getLoser2() {
+//		return loser2;
+//	}
+//	
+//	public void setLoser2(Player loser2) {
+//		this.loser2 = loser2;
+//	}
+	
+	@Column(name="WINNER_1", nullable=false)
+	public Integer getWinner1() {
 		return winner1;
 	}
 	
-	public void setWinner1(Player winner1) {
+	public void setWinner1(Integer winner1) {
 		this.winner1 = winner1;
 	}
 	
-	@ManyToOne
-	@JoinColumn(name="WINNER_2", referencedColumnName="PLAYER_ID")
-	@NotFound(action=NotFoundAction.IGNORE)
-	public Player getWinner2() {
+	@Column(name="WINNER_2")
+	public Integer getWinner2() {
 		return winner2;
 	}
 	
-	public void setWinner2(Player winner2) {
+	public void setWinner2(Integer winner2) {
 		this.winner2 = winner2;
 	}
-
-	@ManyToOne
-	@JoinColumn(name="LOSER_1", referencedColumnName="PLAYER_ID")
-	public Player getLoser1() {
+	
+	@Column(name="LOSER_1", nullable=false)
+	public Integer getLoser1() {
 		return loser1;
 	}
 	
-	public void setLoser1(Player loser1) {
+	public void setLoser1(Integer loser1) {
 		this.loser1 = loser1;
 	}
 	
-	@ManyToOne
-	@JoinColumn(name="LOSER_2", referencedColumnName="PLAYER_ID")
-	@NotFound(action=NotFoundAction.IGNORE)
-	public Player getLoser2() {
+	@Column(name="LOSER_2")
+	public Integer getLoser2() {
 		return loser2;
 	}
 	
-	public void setLoser2(Player loser2) {
+	public void setLoser2(Integer loser2) {
 		this.loser2 = loser2;
 	}
 	

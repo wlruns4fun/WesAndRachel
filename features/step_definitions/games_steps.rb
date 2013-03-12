@@ -13,7 +13,7 @@ Then /^the Games page header says "([^"]*)"$/ do |text|
 end
 
 Then /^I see a list of all the games$/ do
-  @games_page.games_list_element.wait_until(180) do
+  @games_page.games_list_element.wait_until(60) do
     @games_page.games_list.length > 0
   end
 end

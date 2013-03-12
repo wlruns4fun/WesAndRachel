@@ -25,6 +25,7 @@ public class RecordDao {
 	@SuppressWarnings("unchecked")
 	public List<LossRecord> getAllLossRecords() {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(LossRecord.class);
+		criteria.setCacheable(true);
 		return (List<LossRecord>) criteria.list();
 	}
 	
@@ -40,6 +41,7 @@ public class RecordDao {
 	@SuppressWarnings("unchecked")
 	public List<WinRecord> getAllWinRecords() {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(WinRecord.class);
+		criteria.setCacheable(true);
 		return (List<WinRecord>) criteria.list();
 	}
 	

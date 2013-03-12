@@ -25,7 +25,6 @@ public class GameDaoTest {
 	private PlayerDao playerDao;
 	
 	@Test
-//	@Ignore("unit test takes >1min to return all games #WTF!")
 	public void getAllGames_returnsGames() {
 		List<Game> allGames = gameDao.getAllGames();
 		Assert.assertTrue("allGames.size(): "+allGames.size(), allGames.size() > 0);
@@ -50,25 +49,25 @@ public class GameDaoTest {
 	@Test
 	public void getGame_returnsWinner1() {
 		Game game = gameDao.getGame(1);
-		Assert.assertEquals("winner1", 80, game.getWinner1().getId());
+		Assert.assertEquals("winner1", 80, (int)game.getWinner1());
 	}
 	
 	@Test
 	public void getGame_returnsWinner2() {
 		Game game = gameDao.getGame(1);
-		Assert.assertEquals("winner2", 79, game.getWinner2().getId());
+		Assert.assertEquals("winner2", 79, (int)game.getWinner2());
 	}
 	
 	@Test
 	public void getGame_returnsLoser1() {
 		Game game = gameDao.getGame(1);
-		Assert.assertEquals("loser1", 84, game.getLoser1().getId());
+		Assert.assertEquals("loser1", 84, (int)game.getLoser1());
 	}
 	
 	@Test
 	public void getGame_returnsLoser2() {
 		Game game = gameDao.getGame(1);
-		Assert.assertEquals("loser2", 90, game.getLoser2().getId());
+		Assert.assertEquals("loser2", 90, (int)game.getLoser2());
 	}
 	
 	@Test
@@ -78,7 +77,7 @@ public class GameDaoTest {
 	}
 	
 	@Test
-	@Ignore("still experiencing performance issues")
+	@Ignore("inconsistent cache test results")
 	public void clearGameCache_evictsGameEntitiesFromSessionCache() {
 		long start;
 		long stop;

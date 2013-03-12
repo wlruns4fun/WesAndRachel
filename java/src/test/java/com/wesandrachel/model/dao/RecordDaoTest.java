@@ -158,7 +158,7 @@ public class RecordDaoTest {
 	}
 	
 	@Test
-	@Ignore("still experiencing performance issues")
+	@Ignore("inconsistent cache test results")
 	public void clearWinRecordCache_evictsWinRecordEntitiesFromSessionCache() {
 		long start;
 		long stop;

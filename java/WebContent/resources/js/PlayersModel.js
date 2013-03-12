@@ -1,5 +1,18 @@
 function PlayersModel() {
 	
+	var playersMap = {};
+	
+	this.setPlayersMap = function(data) {
+		playersMap = {};
+		$.each(data, function(index, player) {
+			playersMap[player.id] = player;
+		});
+	};
+	
+	this.getPlayer = function(id) {
+		return playersMap[id];
+	};
+	
 	this.getTotalNumGames = function(player) {
 		var totalNumGames = 0;
 		totalNumGames += player.doublesWins;

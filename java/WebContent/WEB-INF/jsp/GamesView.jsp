@@ -8,6 +8,7 @@
 	<%@include file="/resources/include/jqueryMobile.html"%>
 	<%@include file="/resources/include/common.html"%>
 	
+	<script src="<spring:url value='/resources/js/PlayersController.js'/>"></script>
 	<script src="<spring:url value='/resources/js/PlayersModel.js'/>"></script>
 	<script src="<spring:url value='/resources/js/GamesController.js'/>"></script>
 	<script src="<spring:url value='/resources/js/GamesView.js'/>"></script>

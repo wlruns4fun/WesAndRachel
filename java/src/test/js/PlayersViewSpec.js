@@ -37,19 +37,10 @@ describe("PlayersView", function() {
 	};
 	
 	var playersData = [];
+	var emptyData = [];
+	
 	beforeEach(function() {
 		playersData = [player1, player2, player3];
-	});
-	
-	describe(".sortByTotalNumGames(player1, player2)", function() {
-		
-		it("sorts Players by total number of games in decreasing order", function() {
-			playersData.sort(playersView.sortByTotalNumGames);
-			
-			expect(playersData[0].id).toBe(2);
-			expect(playersData[1].id).toBe(1);
-			expect(playersData[2].id).toBe(3);
-		});
 	});
 	
 	describe(".sortByEloRating(player1, player2)", function() {
@@ -60,6 +51,17 @@ describe("PlayersView", function() {
 			expect(playersData[0].id).toBe(3);
 			expect(playersData[1].id).toBe(1);
 			expect(playersData[2].id).toBe(2);
+		});
+	});
+	
+	describe(".sortByTotalNumGames(player1, player2)", function() {
+		
+		it("sorts Players by total number of games in decreasing order", function() {
+			playersData.sort(playersView.sortByTotalNumGames);
+			
+			expect(playersData[0].id).toBe(2);
+			expect(playersData[1].id).toBe(1);
+			expect(playersData[2].id).toBe(3);
 		});
 	});
 	
@@ -104,6 +106,29 @@ describe("PlayersView", function() {
 			playersView.populatePlayersList(playersData);
 			
 			expect(utils.refreshListview).toHaveBeenCalled();
+		});
+	});
+	
+	describe(".onPageInitCallback()", function() {
+		
+		it("calls the function to get all the Players", function() {
+			spyOn(playersController, "getPlayers");
+			spyOn(playersView, "getPlayersCallback");
+			
+			playersView.onPageInitCallback();
+			
+			expect(playersController.getPlayers).toHaveBeenCalledWith(playersView.getPlayersCallback);
+		});
+	});
+	
+	describe(".getPlayersCallback(data)", function() {
+		
+		it("calls the function to populate the Players list", function() {
+			spyOn(playersView, "populatePlayersList");
+			
+			playersView.getPlayersCallback(emptyData);
+			
+			expect(playersView.populatePlayersList).toHaveBeenCalledWith(emptyData);
 		});
 	});
 });

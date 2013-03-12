@@ -1,15 +1,15 @@
 function PlayersView() {
 
-	this.sortByTotalNumGames = function(player1, player2) {
-		var totalNumGames1 = playersModel.getTotalNumGames(player1);
-		var totalNumGames2 = playersModel.getTotalNumGames(player2);
-		return (totalNumGames2 - totalNumGames1);
-	};
-	
 	this.sortByEloRating = function(player1, player2) {
 		var eloRating1 = player1.eloRating;
 		var eloRating2 = player2.eloRating;
 		return (eloRating2 - eloRating1);
+	};
+	
+	this.sortByTotalNumGames = function(player1, player2) {
+		var totalNumGames1 = playersModel.getTotalNumGames(player1);
+		var totalNumGames2 = playersModel.getTotalNumGames(player2);
+		return (totalNumGames2 - totalNumGames1);
 	};
 	
 	this.sortPlayers = function(player1, player2) {
@@ -41,10 +41,18 @@ function PlayersView() {
 		$("#playersList").html(playersList);
 		utils.refreshListview($("#playersList"));
 	};
+	
+	this.onPageInitCallback = function() {
+		playersController.getPlayers(playersView.getPlayersCallback);
+	};
+	
+	this.getPlayersCallback = function(data) {
+		playersView.populatePlayersList(data);
+	};
 };
 
 var playersView = new PlayersView();
 
 $(document).on("pageinit", function(event) {
-	playersController.getPlayers(playersView.populatePlayersList);
+	playersView.onPageInitCallback();
 });

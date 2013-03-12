@@ -25,6 +25,7 @@ public class PlayerDao {
 	@SuppressWarnings("unchecked")
 	public List<Player> getAllPlayers() {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Player.class);
+		criteria.setCacheable(true);
 		return (List<Player>) criteria.list();
 	}
 	
