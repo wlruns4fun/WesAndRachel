@@ -26,10 +26,23 @@ describe("PlayersModel", function() {
 		categories: [{name: "category3"}]
 	}; 
 	
+	var player3 = {
+		id: 3,
+		firstName: "firstName3",
+		lastName: "lastName3",
+		doublesWins: 3,
+		doublesLosses: 3,
+		singlesWins: 3,
+		singlesLosses: 3,
+		prevWins: 3,
+		prevLosses: 3,
+		categories: [{name: "category3"}]
+	};
+	
 	var players = [];
 	
 	beforeEach(function() {
-		players = [player1, player2];
+		players = [player1, player2, player3];
 	});
 	
 	describe(".setPlayersMap(players)", function() {
@@ -38,9 +51,11 @@ describe("PlayersModel", function() {
 			playersModel.setPlayersMap(players);
 			var playerFromMap1 = playersModel.getPlayer(player1.id);
 			var playerFromMap2 = playersModel.getPlayer(player2.id);
+			var playerFromMap3 = playersModel.getPlayer(player3.id);
 			
 			expect(playerFromMap1).not.toBe(undefined);
 			expect(playerFromMap2).not.toBe(undefined);
+			expect(playerFromMap3).not.toBe(undefined);
 		});
 	});
 	
@@ -50,9 +65,11 @@ describe("PlayersModel", function() {
 			playersModel.setPlayersMap(players);
 			var playerFromMap1 = playersModel.getPlayer(player1.id);
 			var playerFromMap2 = playersModel.getPlayer(player2.id);
+			var playerFromMap3 = playersModel.getPlayer(player3.id);
 			
 			expect(playerFromMap1.id).toBe(player1.id);
 			expect(playerFromMap2.id).toBe(player2.id);
+			expect(playerFromMap3.id).toBe(player3.id);
 		});
 	});
 	
@@ -83,14 +100,25 @@ describe("PlayersModel", function() {
 		});
 	});
 	
-	describe(".getCategoriesNames(player)", function() {
+	describe(".getCategoriesString(player)", function() {
 		
-		it("returns a list of all the Player categories' names", function() {
-			var expectedCategoriesNames = player1.categories[0].name + " " + player1.categories[1].name;
+		it("returns a string of all the Player's Categories", function() {
+			var expectedCategoriesString = player1.categories[0].name + " " + player1.categories[1].name;
 			
-			var categoriesNames = playersModel.getCategoriesNames(player1);
+			var categoriesString = playersModel.getCategoriesString(player1);
 			
-			expect(categoriesNames).toEqual(expectedCategoriesNames);
+			expect(categoriesString).toEqual(expectedCategoriesString);
+		});
+	});
+	
+	describe(".getUniqueCategoriesString(players)", function() {
+		
+		it("returns a string of all the unique Players' Categories", function() {
+			var expectedUniqueCategoriesString = "category1 category2 category3";
+			
+			var uniqueCategoriesString = playersModel.getUniqueCategoriesString(players);
+		
+			expect(uniqueCategoriesString).toEqual(expectedUniqueCategoriesString);
 		});
 	});
 	

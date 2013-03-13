@@ -1,32 +1,34 @@
 describe("GamesView", function() {
 	
+	var player1 = {id: 1, categories: []};
+	
 	var game1 = {
 		id: 3,
 		date: new Date(2000, 1, 1),
-		winner1: {},
-		winner2: {},
-		loser1: {},
-		loser2: {},
+		winner1: player1,
+		winner2: player1,
+		loser1: player1,
+		loser2: player1,
 		shutout: false
 	};
 	
 	var game2 = {
 		id: 1,
 		date: new Date(2000, 1, 1),
-		winner1: {},
-		winner2: {},
-		loser1: {},
-		loser2: {},
+		winner1: player1,
+		winner2: player1,
+		loser1: player1,
+		loser2: player1,
 		shutout: false
 	};
 	
 	var game3 = {
 		id: 2,
 		date: new Date(2000, 1, 2),
-		winner1: {},
-		winner2: {},
-		loser1: {},
-		loser2: {},
+		winner1: player1,
+		winner2: player1,
+		loser1: player1,
+		loser2: player1,
 		shutout: false
 	};
 	
@@ -74,11 +76,11 @@ describe("GamesView", function() {
 		
 		beforeEach(function() {
 			affix("#gamesList");
+			spyOn(utils, "refreshListview");
 		});
 		
 		it("sorts Games data", function() {
 			spyOn(gamesData, "sort");
-			spyOn(utils, "refreshListview");
 			
 			gamesView.populateGamesList(gamesData);
 			
@@ -86,8 +88,6 @@ describe("GamesView", function() {
 		});
 		
 		it("creates a list item for each Game", function() {
-			spyOn(utils, "refreshListview");
-			
 			gamesView.populateGamesList(gamesData);
 			var numGames = $("#gamesList li").length;
 			
@@ -95,8 +95,6 @@ describe("GamesView", function() {
 		});
 		
 		it("refreshes the listview after populating list", function() {
-			spyOn(utils, "refreshListview");
-			
 			gamesView.populateGamesList(gamesData);
 			
 			expect(utils.refreshListview).toHaveBeenCalled();

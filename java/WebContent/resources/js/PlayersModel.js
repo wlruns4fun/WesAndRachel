@@ -2,9 +2,9 @@ function PlayersModel() {
 	
 	var playersMap = {};
 	
-	this.setPlayersMap = function(data) {
+	this.setPlayersMap = function(players) {
 		playersMap = {};
-		$.each(data, function(index, player) {
+		$.each(players, function(index, player) {
 			playersMap[player.id] = player;
 		});
 	};
@@ -43,17 +43,42 @@ function PlayersModel() {
 		return totalNumLosses;
 	};
 	
-	this.getCategoriesNames = function(player) {
-		var categoriesNames = "";
-		var categories = player.categories;
-		for (var i=0; i<categories.length; i++) {
-			categoriesNames += categories[i].name;
-			if (i < categories.length-1) {
-				categoriesNames += " ";
-			}
-		}
+	this.getCategoriesString = function(player) {
+		var categoriesString = "";
 		
-		return categoriesNames;
+		var categories = player.categories;
+		$.each(categories, function(index, category) {
+			
+			categoriesString += category.name;
+			if (index < categories.length-1) {
+				categoriesString += " ";
+			}
+		});
+		
+		return categoriesString;
+	};
+	
+	this.getUniqueCategoriesString = function(players) {
+		var uniqueCategoriesString = "";
+		
+		$.each(players, function(index, player) {
+			
+			if (player != null) {
+				var categories = player.categories;
+				$.each(categories, function(index, category) {
+					
+					var indexOfCategory = uniqueCategoriesString.indexOf(category.name);
+					if (-1 == indexOfCategory) {
+						if (uniqueCategoriesString.length > 0) {
+							uniqueCategoriesString += " ";
+						}
+						uniqueCategoriesString += category.name;
+					}
+				});
+			}
+		});
+		
+		return uniqueCategoriesString;
 	};
 	
 	this.getFullName = function(player) {

@@ -12,4 +12,5 @@ class GamesPage
     span :loser1, :name => 'loser1'
     span :loser2, :name => 'loser2'
     span :shutout, :name => 'shutout'
+    span :categories, :name => 'categories'
 end

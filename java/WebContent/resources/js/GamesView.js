@@ -32,6 +32,7 @@ function GamesView() {
 			var winner2 = playersModel.getPlayer(game.winner2);
 			var loser1 = playersModel.getPlayer(game.loser1);
 			var loser2 = playersModel.getPlayer(game.loser2);
+			var players = [winner1, winner2, loser1, loser2];
 			
 			var dateString = utils.getDateString(date);
 			var winner1FullName = playersModel.getFullName(winner1);
@@ -39,14 +40,16 @@ function GamesView() {
 			var loser1FullName = playersModel.getFullName(loser1);
 			var loser2FullName = (loser2 != null ? "/"+playersModel.getFullName(loser2) : "");
 			var shutoutMessage = (game.shutout == true ? "(WALL OF SHAME!)" : "");
+			var categories = playersModel.getUniqueCategoriesString(players);
 			
 			gamesList += "<li>";
 			gamesList += "<span name='date'>" + dateString + "</span>" + ": ";
 			gamesList += "<span name='winner1'>" + winner1FullName + "</span>";
 			gamesList += "<span name='winner2'>" + winner2FullName + "</span>" + " - ";
 			gamesList += "<span name='loser1'>" + loser1FullName + "</span>";
-			gamesList += "<span name='loser2'>" + loser2FullName + "</span>";
-			gamesList += " <span name='shutout'>" + shutoutMessage + "</span>";
+			gamesList += "<span name='loser2'>" + loser2FullName + "</span>" + " ";
+			gamesList += "<span name='shutout'>" + shutoutMessage + "</span>";
+			gamesList += "<span name='categories' class='hidden'>" + categories + "</span>";
 			gamesList += "</li>";
 		});
 		
@@ -70,6 +73,6 @@ function GamesView() {
 
 var gamesView = new GamesView();
 
-$(document).on("pageinit", function(event) {
+$(document).ready(function() {
 	gamesView.onPageInitCallback();
 });

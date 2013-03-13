@@ -80,11 +80,11 @@ describe("PlayersView", function() {
 		
 		beforeEach(function() {
 			affix("#playersList");
+			spyOn(utils, "refreshListview");
 		});
 		
 		it("sorts Players data", function() {
 			spyOn(playersData, "sort");
-			spyOn(utils, "refreshListview");
 			
 			playersView.populatePlayersList(playersData);
 			
@@ -92,8 +92,6 @@ describe("PlayersView", function() {
 		});
 		
 		it("creates a list item for each Player", function() {
-			spyOn(utils, "refreshListview");
-			
 			playersView.populatePlayersList(playersData);
 			var numPlayers = $("#playersList li").length;
 			
@@ -101,8 +99,6 @@ describe("PlayersView", function() {
 		});
 		
 		it("refreshes the listview after populating list", function() {
-			spyOn(utils, "refreshListview");
-			
 			playersView.populatePlayersList(playersData);
 			
 			expect(utils.refreshListview).toHaveBeenCalled();
