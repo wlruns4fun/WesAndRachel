@@ -40,7 +40,7 @@ function GamesView() {
 			var loser1FullName = playersModel.getFullName(loser1);
 			var loser2FullName = (loser2 != null ? "/"+playersModel.getFullName(loser2) : "");
 			var shutoutMessage = (game.shutout == true ? "(WALL OF SHAME!)" : "");
-			var categories = playersModel.getUniqueCategoriesString(players);
+			var commonCategories = playersModel.getCommonCategoriesString(players);
 			
 			gamesList += "<li>";
 			gamesList += "<span name='date'>" + dateString + "</span>" + ": ";
@@ -49,7 +49,7 @@ function GamesView() {
 			gamesList += "<span name='loser1'>" + loser1FullName + "</span>";
 			gamesList += "<span name='loser2'>" + loser2FullName + "</span>" + " ";
 			gamesList += "<span name='shutout'>" + shutoutMessage + "</span>";
-			gamesList += "<span name='categories' class='hidden'>" + categories + "</span>";
+			gamesList += "<span name='commonCategories' class='hidden'>" + commonCategories + "</span>";
 			gamesList += "</li>";
 		});
 		

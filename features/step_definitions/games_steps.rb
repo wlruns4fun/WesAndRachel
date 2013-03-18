@@ -36,8 +36,8 @@ Then /^the list contains each Game's shutout status$/ do
   fail('\'Shutout\' does not exist') unless(!@games_page.shutout.nil?)
 end
 
-Then /^the list contains each Game's Players' Categories$/ do
-  fail('\'Categories\' do not exist') unless(!@games_page.categories.nil?)
+Then /^the list contains each Game's Players' common Categories$/ do
+  fail('\'Categories\' do not exist') unless(!@games_page.common_categories.nil?)
 end
 
 Then /^I see the Games search filter$/ do

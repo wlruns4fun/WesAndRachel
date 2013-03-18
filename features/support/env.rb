@@ -2,7 +2,7 @@ require 'page-object'
 require 'watir-webdriver'
 
 $LOCAL = 'http://localhost:8080/WesAndRachel'
-$PROD = 'http://wesandrachel.com'
+$PROD = 'http://wesandrachel.cloudfoundry.com'
 $ENV = $LOCAL
 
 Before do

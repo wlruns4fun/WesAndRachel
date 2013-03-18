@@ -76,6 +76,7 @@ describe("GamesView", function() {
 		
 		beforeEach(function() {
 			affix("#gamesList");
+			spyOn(playersModel, "getCommonCategoriesString");
 			spyOn(utils, "refreshListview");
 		});
 		

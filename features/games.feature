@@ -23,7 +23,7 @@ Feature: Game History
       And the list contains each Game's winners
       And the list contains each Game's losers
       And the list contains each Game's shutout status
-      And the list contains each Game's Players' Categories
+      And the list contains each Game's Players' common Categories
 
 
   Scenario: Search Games by date

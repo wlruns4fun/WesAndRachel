@@ -45,40 +45,66 @@ function PlayersModel() {
 	
 	this.getCategoriesString = function(player) {
 		var categoriesString = "";
-		
+			
 		var categories = player.categories;
 		$.each(categories, function(index, category) {
 			
-			categoriesString += category.name;
-			if (index < categories.length-1) {
-				categoriesString += " ";
+			if (category != null) {
+				categoriesString += category.name;
+				if (index < categories.length-1) {
+					categoriesString += " ";
+				}
 			}
 		});
 		
 		return categoriesString;
 	};
 	
-	this.getUniqueCategoriesString = function(players) {
-		var uniqueCategoriesString = "";
+	this.getCommonCategoriesString = function(players) {
+		var commonCategories = {categories: []};
 		
-		$.each(players, function(index, player) {
+		var firstPlayer = players[0];
+		var firstPlayerCategories = firstPlayer.categories;
+		$.each(firstPlayerCategories, function(index, category) {
+			commonCategories.categories.push(category);
+		});
+		
+		// check all the other Players
+		for (var i=1; i<players.length; i++) {
 			
-			if (player != null) {
-				var categories = player.categories;
-				$.each(categories, function(index, category) {
+			var otherPlayer = players[i];
+			if (otherPlayer != null) {
+
+				// check each of the common Categories...
+				$.each(commonCategories.categories, function(commonCategoryIndex, commonCategory) {
 					
-					var indexOfCategory = uniqueCategoriesString.indexOf(category.name);
-					if (-1 == indexOfCategory) {
-						if (uniqueCategoriesString.length > 0) {
-							uniqueCategoriesString += " ";
+					if (commonCategory != null) {
+						var hasCategoryInCommon = false;
+						
+						// ...against the other Player's Categories...
+						var otherCategories = otherPlayer.categories;
+						$.each(otherCategories, function(otherCategoryIndex, otherCategory) {
+							
+							// ...to see if they have the Category in common
+							var commonCategoryName = commonCategory.name;
+							var otherCategoryName = otherCategory.name;
+							var indexOfCategory = commonCategoryName.indexOf(otherCategoryName);
+							if (indexOfCategory >= 0) {
+								hasCategoryInCommon = true;
+							}
+						});
+						
+						// remove the common Category if other Players don't have it in common
+						if (!hasCategoryInCommon) {
+							commonCategories.categories[commonCategoryIndex] = null;
 						}
-						uniqueCategoriesString += category.name;
 					}
 				});
 			}
-		});
+		}
 		
-		return uniqueCategoriesString;
+		commonCategoriesString = this.getCategoriesString(commonCategories);
+		return commonCategoriesString;
 	};
 	
 	this.getFullName = function(player) {

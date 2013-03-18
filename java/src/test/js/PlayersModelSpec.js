@@ -10,7 +10,7 @@ describe("PlayersModel", function() {
 		singlesLosses: 4,
 		prevWins: 5,
 		prevLosses: 6,
-		categories: [{name: "category1"}, {name: "category2"}]
+		categories: [{name: "category1"}, {name: "category2"}, {name: "category3"}]
 	};
 	
 	var player2 = {
@@ -23,7 +23,7 @@ describe("PlayersModel", function() {
 		singlesLosses: 3,
 		prevWins: 2,
 		prevLosses: 1,
-		categories: [{name: "category3"}]
+		categories: [{name: "category2"}, {name: "category3"}]
 	}; 
 	
 	var player3 = {
@@ -36,7 +36,7 @@ describe("PlayersModel", function() {
 		singlesLosses: 3,
 		prevWins: 3,
 		prevLosses: 3,
-		categories: [{name: "category3"}]
+		categories: [{name: "category2"}, {name: "category3"}]
 	};
 	
 	var players = [];
@@ -103,7 +103,7 @@ describe("PlayersModel", function() {
 	describe(".getCategoriesString(player)", function() {
 		
 		it("returns a string of all the Player's Categories", function() {
-			var expectedCategoriesString = player1.categories[0].name + " " + player1.categories[1].name;
+			var expectedCategoriesString = "category1 category2 category3";
 			
 			var categoriesString = playersModel.getCategoriesString(player1);
 			
@@ -111,14 +111,14 @@ describe("PlayersModel", function() {
 		});
 	});
 	
-	describe(".getUniqueCategoriesString(players)", function() {
+	describe(".getCommonCategoriesString(players)", function() {
 		
-		it("returns a string of all the unique Players' Categories", function() {
-			var expectedUniqueCategoriesString = "category1 category2 category3";
+		it("returns a string of only the Categories common to all the Players", function() {
+			var expectedCommonCategoriesString = "category2 category3";
 			
-			var uniqueCategoriesString = playersModel.getUniqueCategoriesString(players);
+			var commonCategoriesString = playersModel.getCommonCategoriesString(players);
 		
-			expect(uniqueCategoriesString).toEqual(expectedUniqueCategoriesString);
+			expect(commonCategoriesString).toEqual(expectedCommonCategoriesString);
 		});
 	});
 	
