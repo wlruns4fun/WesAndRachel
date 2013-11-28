@@ -13,29 +13,13 @@ import com.wesandrachel.model.domain.WinRecord;
 
 @Repository
 @Transactional
-public class RecordDao {
+public class WinRecordDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
 	
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
-	}
-	
-	@SuppressWarnings("unchecked")
-	public List<LossRecord> getAllLossRecords() {
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(LossRecord.class);
-		criteria.setCacheable(true);
-		return (List<LossRecord>) criteria.list();
-	}
-	
-	public LossRecord getLossRecord(int id) {
-		Object lossRecord = sessionFactory.getCurrentSession().get(LossRecord.class, id);
-		return (LossRecord) lossRecord;
-	}
-	
-	public void clearLossRecordCache() {
-		sessionFactory.getCache().evictEntityRegion(LossRecord.class);
 	}
 	
 	@SuppressWarnings("unchecked")

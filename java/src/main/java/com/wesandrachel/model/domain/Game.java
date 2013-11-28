@@ -20,7 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.wesandrachel.model.dao.PlayerDao;
 
-@Entity @Table(name="FOOSBALL_HISTORY")
+@Entity @Table(name="GAMES")
 @Cacheable @Cache(usage=CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Game implements Serializable {
 
@@ -48,7 +48,7 @@ public class Game implements Serializable {
 		this.id = id;
 	}
 	
-	@Column(name="DATE", nullable=false)
+	@Column(name="GAME_DATE", nullable=false)
 	public Date getDate() {
 		return date;
 	}

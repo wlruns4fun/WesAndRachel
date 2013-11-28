@@ -39,26 +39,4 @@ public class CategoryDaoTest {
 		Category category = categoryDao.getCategory(1);
 		Assert.assertEquals("name", "Cardinal Solutions", category.getName());
 	}
-	
-	@Test
-	@Ignore("inconsistent cache test results")
-	public void clearCategoryCache_evictsCategoryEntitiesFromSessionCache() {
-		long start;
-		long stop;
-		
-		categoryDao.clearCategoryCache();
-		
-		start = System.currentTimeMillis();
-		categoryDao.getCategory(1);
-		stop = System.currentTimeMillis();
-		long baseQueryTime = stop-start;
-		
-		start = System.currentTimeMillis();
-		categoryDao.getCategory(1);
-		stop = System.currentTimeMillis();
-		long cachedQueryTime = stop-start;
-		
-		Assert.assertTrue("caching should reduce query time: "+cachedQueryTime+" !< "+baseQueryTime, 
-			cachedQueryTime < baseQueryTime);
-	}
 }

@@ -76,27 +76,6 @@ public class GameDaoTest {
 		Assert.assertEquals("shutout", true, game.getShutout());
 	}
 	
-	@Test
-	@Ignore("inconsistent cache test results")
-	public void clearGameCache_evictsGameEntitiesFromSessionCache() {
-		long start;
-		long stop;
-		
-		gameDao.clearGameCache();
-		
-		start = System.currentTimeMillis();
-		gameDao.getGame(1);
-		stop = System.currentTimeMillis();
-		long baseQueryTime = stop-start;
-		
-		start = System.currentTimeMillis();
-		gameDao.getGame(1);
-		stop = System.currentTimeMillis();
-		long cachedQueryTime = stop-start;
-		
-		Assert.assertTrue("caching should reduce query time: "+cachedQueryTime+" !< "+baseQueryTime, 
-			cachedQueryTime < baseQueryTime);
-	}
 	
 //	@Test
 //	public void getGamesByPlayer_returnsAllGamesForThatPlayerId() {

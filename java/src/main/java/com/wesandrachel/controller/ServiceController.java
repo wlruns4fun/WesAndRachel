@@ -2,8 +2,9 @@ package com.wesandrachel.controller;
 
 import com.wesandrachel.model.dao.CategoryDao;
 import com.wesandrachel.model.dao.GameDao;
+import com.wesandrachel.model.dao.LossRecordDao;
 import com.wesandrachel.model.dao.PlayerDao;
-import com.wesandrachel.model.dao.RecordDao;
+import com.wesandrachel.model.dao.WinRecordDao;
 import com.wesandrachel.model.domain.Category;
 import com.wesandrachel.model.domain.Game;
 import com.wesandrachel.model.domain.LossRecord;
@@ -28,10 +29,13 @@ public class ServiceController {
 	private GameDao gameDao;
 	
 	@Autowired
+	private LossRecordDao lossRecordDao;
+	
+	@Autowired
 	private PlayerDao playerDao;
 	
 	@Autowired
-	private RecordDao recordDao;
+	private WinRecordDao winRecordDao;
 
 	@RequestMapping(method=RequestMethod.GET, value={"/foosball/services/categories"})
 	public @ResponseBody List<Category> getCategories() {
@@ -45,9 +49,9 @@ public class ServiceController {
 		return allGames;
 	}
 	
-	@RequestMapping(method=RequestMethod.GET, value={"/foosball/services/lossRecords"})
+	@RequestMapping(method=RequestMethod.GET, value={"/foosball/services/records/losses"})
 	public @ResponseBody List<LossRecord> getAllLossRecords() {
-		List<LossRecord> allLossRecords = recordDao.getAllLossRecords();
+		List<LossRecord> allLossRecords = lossRecordDao.getAllLossRecords();
 		return allLossRecords;
 	}
 	
@@ -57,9 +61,9 @@ public class ServiceController {
 		return allPlayers;
 	}
 	
-	@RequestMapping(method=RequestMethod.GET, value={"/foosball/services/winRecords"})
+	@RequestMapping(method=RequestMethod.GET, value={"/foosball/services/records/wins"})
 	public @ResponseBody List<WinRecord> getAllWinRecords() {
-		List<WinRecord> allWinRecords = recordDao.getAllWinRecords();
+		List<WinRecord> allWinRecords = winRecordDao.getAllWinRecords();
 		return allWinRecords;
 	}
 }

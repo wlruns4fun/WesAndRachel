@@ -17,30 +17,30 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
-@Entity @Table(name="FOOSBALL_WIN_RECORDS")
+@Entity @Table(name="RECORDS_WINS")
 @Cacheable @Cache(usage=CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class WinRecord implements Serializable {
 	
 	private static final long serialVersionUID = 8191126637182143936L;
 	
-	private int id;
+	private long id;
 	private int count;
-	private Player winner1;
-	private Player winner2;
+	private Player player1;
+	private Player player2;
 	private Date startDate;
 	private Date endDate;
 	
 	@Id @GeneratedValue
-	@Column(name="WIN_RECORD_ID")
-	public int getId() {
+	@Column(name="RECORD_ID")
+	public long getId() {
 		return id;
 	}
 	
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	
-	@Column(name="WIN_COUNT")
+	@Column(name="COUNT")
 	public int getCount() {
 		return count;
 	}
@@ -50,24 +50,24 @@ public class WinRecord implements Serializable {
 	}
 	
 	@ManyToOne
-	@JoinColumn(name="WINNER_1", referencedColumnName="PLAYER_ID")
-	public Player getWinner1() {
-		return winner1;
+	@JoinColumn(name="PLAYER_1", referencedColumnName="PLAYER_ID")
+	public Player getPlayer1() {
+		return player1;
 	}
 	
-	public void setWinner1(Player winner1) {
-		this.winner1 = winner1;
+	public void setPlayer1(Player player1) {
+		this.player1 = player1;
 	}
 	
 	@ManyToOne
-	@JoinColumn(name="WINNER_2", referencedColumnName="PLAYER_ID")
+	@JoinColumn(name="PLAYER_2", referencedColumnName="PLAYER_ID")
 	@NotFound(action=NotFoundAction.IGNORE)
-	public Player getWinner2() {
-		return winner2;
+	public Player getPlayer2() {
+		return player2;
 	}
 	
-	public void setWinner2(Player winner2) {
-		this.winner2 = winner2;
+	public void setPlayer2(Player player2) {
+		this.player2 = player2;
 	}
 	
 	@Column(name="START_DATE")

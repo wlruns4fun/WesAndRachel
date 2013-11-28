@@ -17,30 +17,30 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
-@Entity @Table(name="FOOSBALL_LOSS_RECORDS")
+@Entity @Table(name="RECORDS_LOSSES")
 @Cacheable @Cache(usage=CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class LossRecord implements Serializable {
 
 	private static final long serialVersionUID = 2063531637815212570L;
 	
-	private int id;
+	private long id;
 	private int count;
-	private Player loser1;
-	private Player loser2;
+	private Player player1;
+	private Player player2;
 	private Date startDate;
 	private Date endDate;
 	
 	@Id @GeneratedValue
-	@Column(name="LOSS_RECORD_ID")
-	public int getId() {
+	@Column(name="RECORD_ID")
+	public long getId() {
 		return id;
 	}
 	
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	
-	@Column(name="LOSS_COUNT")
+	@Column(name="COUNT")
 	public int getCount() {
 		return count;
 	}
@@ -50,24 +50,24 @@ public class LossRecord implements Serializable {
 	}
 	
 	@ManyToOne
-	@JoinColumn(name="LOSER_1", referencedColumnName="PLAYER_ID")
-	public Player getLoser1() {
-		return loser1;
+	@JoinColumn(name="PLAYER_1", referencedColumnName="PLAYER_ID")
+	public Player getPlayer1() {
+		return player1;
 	}
 	
-	public void setLoser1(Player loser1) {
-		this.loser1 = loser1;
+	public void setPlayer1(Player player1) {
+		this.player1 = player1;
 	}
 	
 	@ManyToOne
-	@JoinColumn(name="LOSER_2", referencedColumnName="PLAYER_ID")
+	@JoinColumn(name="PLAYER_2", referencedColumnName="PLAYER_ID")
 	@NotFound(action=NotFoundAction.IGNORE)
-	public Player getLoser2() {
-		return loser2;
+	public Player getPlayer2() {
+		return player2;
 	}
 	
-	public void setLoser2(Player loser2) {
-		this.loser2 = loser2;
+	public void setPlayer2(Player player2) {
+		this.player2 = player2;
 	}
 	
 	@Column(name="START_DATE")

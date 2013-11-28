@@ -17,7 +17,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-@Entity @Table(name="FOOSBALL_PLAYERS")
+@Entity @Table(name="PLAYERS")
 @Cacheable @Cache(usage=CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Player implements Serializable {
 
@@ -26,7 +26,7 @@ public class Player implements Serializable {
 	private int id;
 	private String lastName;
 	private String firstName;
-	private int eloRating = 2000;
+	private int elo = 2000;
 	private int doublesWins = 0;
 	private int doublesLosses = 0;
 	private int singlesWins = 0;
@@ -63,13 +63,13 @@ public class Player implements Serializable {
 		this.firstName = firstName;
 	}
 	
-	@Column(name="ELO_RATING", nullable=false)
-	public int getEloRating() {
-		return eloRating;
+	@Column(name="ELO", nullable=false)
+	public int getElo() {
+		return elo;
 	}
 	
-	public void setEloRating(int eloRating) {
-		this.eloRating = eloRating;
+	public void setElo(int elo) {
+		this.elo = elo;
 	}
 	
 	@Column(name="DOUBLES_WINS", nullable=false)
@@ -127,7 +127,7 @@ public class Player implements Serializable {
 	}
 	
 	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name="FOOSBALL_PLAYER_CATEGORIES",
+	@JoinTable(name="PLAYERS_CATEGORIES",
 		joinColumns={@JoinColumn(name="PLAYER_ID")},
 		inverseJoinColumns={@JoinColumn(name="CATEGORY_ID")})
 	public List<Category> getCategories() {

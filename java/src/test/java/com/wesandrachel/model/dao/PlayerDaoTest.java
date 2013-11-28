@@ -47,7 +47,7 @@ public class PlayerDaoTest {
 	@Test
 	public void getPlayer_returnsEloRating() {
 		Player player = playerDao.getPlayer(1);
-		Assert.assertEquals("eloRating", 1980, player.getEloRating());
+		Assert.assertEquals("elo", 1980, player.getElo());
 	}
 	
 	@Test
@@ -91,27 +91,5 @@ public class PlayerDaoTest {
 		Player player = playerDao.getPlayer(14);
 		Assert.assertTrue("player should contain a list of categories: "+player.getCategories(),
 			player.getCategories().size() > 0);
-	}
-	
-	@Test
-	@Ignore("inconsistent cache test results")
-	public void clearPlayerCache_evictsPlayerEntitiesFromSessionCache() {
-		long start;
-		long stop;
-		
-		playerDao.clearPlayerCache();
-		
-		start = System.currentTimeMillis();
-		playerDao.getPlayer(1);
-		stop = System.currentTimeMillis();
-		long baseQueryTime = stop-start;
-		
-		start = System.currentTimeMillis();
-		playerDao.getPlayer(1);
-		stop = System.currentTimeMillis();
-		long cachedQueryTime = stop-start;
-		
-		Assert.assertTrue("caching should reduce query time: "+cachedQueryTime+" !< "+baseQueryTime, 
-			cachedQueryTime < baseQueryTime);
 	}
 }
