@@ -1,9 +1,9 @@
 function PlayersView() {
 
-	this.sortByEloRating = function(player1, player2) {
-		var eloRating1 = player1.eloRating;
-		var eloRating2 = player2.eloRating;
-		return (eloRating2 - eloRating1);
+	this.sortByElo = function(player1, player2) {
+		var elo1 = player1.elo;
+		var elo2 = player2.elo;
+		return (elo2 - elo1);
 	};
 	
 	this.sortByTotalNumGames = function(player1, player2) {
@@ -13,12 +13,12 @@ function PlayersView() {
 	};
 	
 	this.sortPlayers = function(player1, player2) {
-		var compareEloRatings = playersView.sortByEloRating(player1, player2);
-		if (0 == compareEloRatings) {
+		var compareElos = playersView.sortByElo(player1, player2);
+		if (0 == compareElos) {
 			var compareTotalNumGames = playersView.sortByTotalNumGames(player1, player2);
 			return compareTotalNumGames;
 		} else {
-			return compareEloRatings;
+			return compareElos;
 		}
 	};
 	
@@ -32,7 +32,7 @@ function PlayersView() {
 			var lastName = player.lastName;
 			var totalWins = playersModel.getTotalNumWins(player);
 			var totalLosses = playersModel.getTotalNumLosses(player);
-			var eloRating = player.eloRating;
+			var elo = player.elo;
 			var categories = playersModel.getCategoriesString(player);
 			
 			playersList += "<li>";
@@ -41,7 +41,7 @@ function PlayersView() {
 			playersList += "<span name='lastName'>" + lastName + "</span>" + " (";
 			playersList += "<span name='totalWins'>" + totalWins + "</span>" + "-";
 			playersList += "<span name='totalLosses'>" + totalLosses + "</span>" + ")";
-			playersList += "<span name='eloRating' class='ui-li-count'>" + eloRating + "</span>";
+			playersList += "<span name='elo' class='ui-li-count'>" + elo + "</span>";
 			playersList += "<span name='categories' class='hidden'>" + categories + "</span>";
 			playersList += "</li>";
 		});

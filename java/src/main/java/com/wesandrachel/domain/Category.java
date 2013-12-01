@@ -1,4 +1,4 @@
-package com.wesandrachel.model.domain;
+package com.wesandrachel.domain;
 
 import java.io.Serializable;
 

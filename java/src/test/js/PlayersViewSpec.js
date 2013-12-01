@@ -2,7 +2,7 @@ describe("PlayersView", function() {
 	
 	var player1 = {
 		id: 1,
-		eloRating: 1000, 
+		elo: 1000, 
 		doublesWins: 1,
 		doublesLosses: 1,
 		singlesWins: 1,
@@ -14,7 +14,7 @@ describe("PlayersView", function() {
 	
 	var player2 = {
 		id: 2,
-		eloRating: 1000, 
+		elo: 1000, 
 		doublesWins: 2,
 		doublesLosses: 2,
 		singlesWins: 2,
@@ -26,7 +26,7 @@ describe("PlayersView", function() {
 	
 	var player3 = {
 		id: 3,
-		eloRating: 2000, 
+		elo: 2000, 
 		doublesWins: 0,
 		doublesLosses: 0,
 		singlesWins: 0,
@@ -43,10 +43,10 @@ describe("PlayersView", function() {
 		playersData = [player1, player2, player3];
 	});
 	
-	describe(".sortByEloRating(player1, player2)", function() {
+	describe(".sortByElo(player1, player2)", function() {
 		
 		it("sorts Players by Elo rating in decreasing order", function() {
-			playersData.sort(playersView.sortByEloRating);
+			playersData.sort(playersView.sortByElo);
 			
 			expect(playersData[0].id).toBe(3);
 			expect(playersData[1].id).toBe(1);

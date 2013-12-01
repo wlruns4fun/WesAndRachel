@@ -1,7 +1,8 @@
-target/
 config_PROD.properties
-.idea/
 *.log
+.idea/
+Servers/
+target/
 
 #################
 ## Eclipse

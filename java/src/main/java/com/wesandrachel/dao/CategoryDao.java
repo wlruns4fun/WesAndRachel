@@ -1,19 +1,18 @@
-package com.wesandrachel.model.dao;
+package com.wesandrachel.dao;
 
-import com.wesandrachel.model.domain.Player;
+import com.wesandrachel.domain.Category;
 
 import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional
-public class PlayerDao {
+public class CategoryDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -23,18 +22,18 @@ public class PlayerDao {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Player> getAllPlayers() {
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Player.class);
+	public List<Category> getAllCategories() {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Category.class);
 		criteria.setCacheable(true);
-		return (List<Player>) criteria.list();
+		return (List<Category>) criteria.list();
 	}
 	
-	public Player getPlayer(int id) {
-		Object player = sessionFactory.getCurrentSession().get(Player.class, id);
-		return (Player) player;
+	public Category getCategory(int id) {
+		Object category = sessionFactory.getCurrentSession().get(Category.class, id);
+		return (Category) category;
 	}
 	
-	public void clearPlayerCache() {
-		sessionFactory.getCache().evictEntityRegion(Player.class);
+	public void clearCategoryCache() {
+		sessionFactory.getCache().evictEntityRegion(Category.class);
 	}
 }

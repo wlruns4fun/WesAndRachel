@@ -1,12 +1,11 @@
-package com.wesandrachel.model.dao;
+package com.wesandrachel.dao;
 
-import com.wesandrachel.model.domain.Game;
+import com.wesandrachel.domain.Game;
 
 import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

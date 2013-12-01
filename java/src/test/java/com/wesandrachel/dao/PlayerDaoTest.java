@@ -1,6 +1,7 @@
-package com.wesandrachel.model.dao;
+package com.wesandrachel.dao;
 
-import com.wesandrachel.model.domain.Player;
+import com.wesandrachel.dao.PlayerDao;
+import com.wesandrachel.domain.Player;
 
 import java.util.List;
 
@@ -8,7 +9,6 @@ import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.junit.Test;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;

@@ -1,4 +1,4 @@
-package com.wesandrachel.model.dao;
+package com.wesandrachel.dao;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.wesandrachel.model.domain.LossRecord;
-import com.wesandrachel.model.domain.WinRecord;
+import com.wesandrachel.domain.LossRecord;
+import com.wesandrachel.domain.WinRecord;
 
 @Repository
 @Transactional

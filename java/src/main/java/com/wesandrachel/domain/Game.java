@@ -1,4 +1,4 @@
-package com.wesandrachel.model.domain;
+package com.wesandrachel.domain;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -18,7 +18,7 @@ import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.wesandrachel.model.dao.PlayerDao;
+import com.wesandrachel.dao.PlayerDao;
 
 @Entity @Table(name="GAMES")
 @Cacheable @Cache(usage=CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)

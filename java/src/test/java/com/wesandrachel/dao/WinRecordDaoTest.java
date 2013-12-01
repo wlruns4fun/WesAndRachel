@@ -1,4 +1,4 @@
-package com.wesandrachel.model.dao;
+package com.wesandrachel.dao;
 
 import java.util.Calendar;
 import java.util.List;
@@ -11,8 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.wesandrachel.model.domain.LossRecord;
-import com.wesandrachel.model.domain.WinRecord;
+import com.wesandrachel.dao.WinRecordDao;
+import com.wesandrachel.domain.LossRecord;
+import com.wesandrachel.domain.WinRecord;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"/applicationContext.xml"})

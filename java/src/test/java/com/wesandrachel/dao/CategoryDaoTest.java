@@ -1,6 +1,8 @@
-package com.wesandrachel.model.dao;
+package com.wesandrachel.dao;
 
-import com.wesandrachel.model.domain.Category;
+import com.wesandrachel.dao.CategoryDao;
+import com.wesandrachel.dao.PlayerDao;
+import com.wesandrachel.domain.Category;
 
 import java.util.List;
 

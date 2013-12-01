@@ -36,7 +36,7 @@
 			</props>
 		</property>
 		
-		<property name="packagesToScan" value="com.wesandrachel.model.domain"/>
+		<property name="packagesToScan" value="com.wesandrachel.domain"/>
 
 	</bean>
 
@@ -44,23 +44,23 @@
 	    <property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	
-	<bean id="categoryDao" class="com.wesandrachel.model.dao.CategoryDao">
+	<bean id="categoryDao" class="com.wesandrachel.dao.CategoryDao">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	
-	<bean id="gameDao" class="com.wesandrachel.model.dao.GameDao">
+	<bean id="gameDao" class="com.wesandrachel.dao.GameDao">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	
-	<bean id="lossRecordDao" class="com.wesandrachel.model.dao.LossRecordDao">
+	<bean id="lossRecordDao" class="com.wesandrachel.dao.LossRecordDao">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	
-	<bean id="playerDao" class="com.wesandrachel.model.dao.PlayerDao">
+	<bean id="playerDao" class="com.wesandrachel.dao.PlayerDao">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	
-	<bean id="winRecordDao" class="com.wesandrachel.model.dao.WinRecordDao">
+	<bean id="winRecordDao" class="com.wesandrachel.dao.WinRecordDao">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	

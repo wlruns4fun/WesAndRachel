@@ -1,15 +1,15 @@
 package com.wesandrachel.controller;
 
-import com.wesandrachel.model.dao.CategoryDao;
-import com.wesandrachel.model.dao.GameDao;
-import com.wesandrachel.model.dao.LossRecordDao;
-import com.wesandrachel.model.dao.PlayerDao;
-import com.wesandrachel.model.dao.WinRecordDao;
-import com.wesandrachel.model.domain.Category;
-import com.wesandrachel.model.domain.Game;
-import com.wesandrachel.model.domain.LossRecord;
-import com.wesandrachel.model.domain.Player;
-import com.wesandrachel.model.domain.WinRecord;
+import com.wesandrachel.dao.CategoryDao;
+import com.wesandrachel.dao.GameDao;
+import com.wesandrachel.dao.LossRecordDao;
+import com.wesandrachel.dao.PlayerDao;
+import com.wesandrachel.dao.WinRecordDao;
+import com.wesandrachel.domain.Category;
+import com.wesandrachel.domain.Game;
+import com.wesandrachel.domain.LossRecord;
+import com.wesandrachel.domain.Player;
+import com.wesandrachel.domain.WinRecord;
 
 import java.util.List;
 
