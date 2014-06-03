@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,10 +30,10 @@ public class ServiceController {
 	private GameDao gameDao;
 	
 	@Autowired
-	private LossRecordDao lossRecordDao;
+	private PlayerDao playerDao;
 	
 	@Autowired
-	private PlayerDao playerDao;
+	private LossRecordDao lossRecordDao;
 	
 	@Autowired
 	private WinRecordDao winRecordDao;
@@ -44,21 +45,27 @@ public class ServiceController {
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value={"/foosball/services/games"})
-	public @ResponseBody List<Game> getGames() {
-		List<Game> allGames = gameDao.getAllGames();
-		return allGames;
+	public @ResponseBody List<Game> getAllGamesDesc() {
+		List<Game> allGamesDesc = gameDao.getAllGamesDesc();
+		return allGamesDesc;
 	}
 	
-	@RequestMapping(method=RequestMethod.GET, value={"/foosball/services/records/losses"})
-	public @ResponseBody List<LossRecord> getAllLossRecords() {
-		List<LossRecord> allLossRecords = lossRecordDao.getAllLossRecords();
-		return allLossRecords;
+	@RequestMapping(method=RequestMethod.GET, value={"/foosball/services/games/page/{pageIndex}/{numGames}"})
+	public @ResponseBody List<Game> getGamesPageDesc(@PathVariable int pageIndex, @PathVariable int numGames) {
+		List<Game> gamesPageDesc = gameDao.getGamesPageDesc(pageIndex, numGames);
+		return gamesPageDesc;
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value={"/foosball/services/players"})
 	public @ResponseBody List<Player> getPlayers() {
 		List<Player> allPlayers = playerDao.getAllPlayers();
 		return allPlayers;
+	}
+	
+	@RequestMapping(method=RequestMethod.GET, value={"/foosball/services/records/losses"})
+	public @ResponseBody List<LossRecord> getAllLossRecords() {
+		List<LossRecord> allLossRecords = lossRecordDao.getAllLossRecords();
+		return allLossRecords;
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value={"/foosball/services/records/wins"})

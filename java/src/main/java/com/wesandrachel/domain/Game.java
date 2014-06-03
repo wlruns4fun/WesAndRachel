@@ -16,6 +16,8 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
+import org.hibernate.annotations.Type;
+import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.wesandrachel.dao.PlayerDao;
@@ -27,7 +29,7 @@ public class Game implements Serializable {
 	private static final long serialVersionUID = -4633351524563529317L;
 	
 	private int id;
-	private Date date;
+	private LocalDate date;
 //	private Player winner1;
 //	private Player winner2;
 //	private Player loser1;
@@ -49,11 +51,12 @@ public class Game implements Serializable {
 	}
 	
 	@Column(name="GAME_DATE", nullable=false)
-	public Date getDate() {
+	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
+	public LocalDate getDate() {
 		return date;
 	}
 	
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 	
