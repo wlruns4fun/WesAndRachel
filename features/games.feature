@@ -31,10 +31,10 @@ Feature: Game History
     Given I go to the Games page
       And I see a list of all the Games
       And I see the Games search filter
-      And I see "2006-08-19" in the Games search results
-    When I enter "2006-09-01" in the Games search filter
-    Then I see "2006-09-01" in the Games search results
-      And I do not see "2006-08-19" in the Games search results
+      And I see "2013-11-19" in the Games search results
+    When I enter "2013-11-18" in the Games search filter
+    Then I see "2013-11-18" in the Games search results
+      And I do not see "2013-11-19" in the Games search results
 
 
   Scenario: Search Games by Player
@@ -42,10 +42,10 @@ Feature: Game History
     Given I go to the Games page
       And I see a list of all the Games
       And I see the Games search filter
-      And I see "Rachel Lewis" in the Games search results
-    When I enter "Charlie Ciancio" in the Games search filter
-    Then I see "Charlie Ciancio" in the Games search results
-      And I do not see "Rachel Lewis" in the Games search results
+      And I see "Wes Lewis" in the Games search results
+    When I enter "Mark Stratis" in the Games search filter
+    Then I see "Mark Stratis" in the Games search results
+      And I do not see "Wes Lewis" in the Games search results
 
 
   Scenario: Search Games by shutout
@@ -53,10 +53,10 @@ Feature: Game History
     Given I go to the Games page
       And I see a list of all the Games
       And I see the Games search filter
-      And I see "2007-09-14" in the Games search results
-    When I enter "Wall of Shame" in the Games search filter
-    Then I see "Wall of Shame" in the Games search results
-      And I do not see "2007-09-14" in the Games search results
+      And I see "2013-11-19" in the Games search results
+    When I enter "wall of shame" in the Games search filter
+    Then I see "WALL OF SHAME" in the Games search results
+      And I do not see "2013-11-19" in the Games search results
 
 
   Scenario: Search Games by Category
@@ -64,7 +64,7 @@ Feature: Game History
     Given I go to the Games page
       And I see a list of all the Games
       And I see the Games search filter
-      And I see "Rachel Lewis" in the Games search results
-    When I enter "Cardinal Solutions" in the Games search filter
+      And I see "Mike Hire" in the Games search results
+    When I enter "cardinal solutions" in the Games search filter
     Then I see "Wes Lewis" in the Games search results
-      And I do not see "Rachel Lewis" in the Games search results
+      And I do not see "Mike Hire" in the Games search results

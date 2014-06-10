@@ -11,6 +11,6 @@ class PlayersPage
     span :last_name, :name => 'lastName'
     span :total_wins, :name => 'totalWins'
     span :total_losses, :name => 'totalLosses'
-    span :elo_rating, :name => 'eloRating'
+    span :elo, :name => 'elo'
     span :categories, :name => 'categories'
 end

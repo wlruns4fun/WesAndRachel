@@ -9,10 +9,11 @@
   		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
   		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
 
- 	<context:component-scan base-package="com.wesandrachel.controller"/>
+ 	<context:component-scan base-package="com.wesandrachel.foosball.controller"/>
  	<context:property-placeholder location="classpath:config_DEV.properties"/>
  	<mvc:annotation-driven />
- 	<mvc:resources location="/resources/" mapping="/resources/**"/>
+ 	<mvc:resources mapping="/resources/**" location="/resources/"/>
+ 	<mvc:resources mapping="/foosball/resources/**" location="/resources/"/>
  	<tx:annotation-driven transaction-manager="transactionManager"/>
  	  
  	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -36,7 +37,7 @@
 			</props>
 		</property>
 		
-		<property name="packagesToScan" value="com.wesandrachel.domain"/>
+		<property name="packagesToScan" value="com.wesandrachel.foosball.domain"/>
 
 	</bean>
 
@@ -44,23 +45,23 @@
 	    <property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	
-	<bean id="categoryDao" class="com.wesandrachel.dao.CategoryDao">
+	<bean id="categoryDao" class="com.wesandrachel.foosball.dao.CategoryDao">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	
-	<bean id="gameDao" class="com.wesandrachel.dao.GameDao">
+	<bean id="gameDao" class="com.wesandrachel.foosball.dao.GameDao">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	
-	<bean id="lossRecordDao" class="com.wesandrachel.dao.LossRecordDao">
+	<bean id="lossRecordDao" class="com.wesandrachel.foosball.dao.LossRecordDao">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	
-	<bean id="playerDao" class="com.wesandrachel.dao.PlayerDao">
+	<bean id="playerDao" class="com.wesandrachel.foosball.dao.PlayerDao">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	
-	<bean id="winRecordDao" class="com.wesandrachel.dao.WinRecordDao">
+	<bean id="winRecordDao" class="com.wesandrachel.foosball.dao.WinRecordDao">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	

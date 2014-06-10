@@ -37,7 +37,7 @@
 			<plugin>
 		        <groupId>com.github.searls</groupId>
 		        <artifactId>jasmine-maven-plugin</artifactId>
-		        <version>1.2.0.0</version>
+		        <version>1.3.1.5</version>
 		        <extensions>true</extensions>
 		        <executions>
           			<execution>
@@ -48,24 +48,25 @@
 	        	</executions>
 		        <configuration>
 		        
-					<jsSrcDir>WebContent/resources/js</jsSrcDir>
-					
+		        	<specRunnerTemplate>REQUIRE_JS</specRunnerTemplate>
+
+					<jsSrcDir>${project.basedir}/WebContent/resources/js</jsSrcDir>
+
+					<preloadSources>
+		        		<source>lib/require.js</source>		        		
+		        	</preloadSources>
+		        	
 		        	<sourceIncludes>
-		        		<include>lib/jquery-1.9.1.js</include>
-		        		<include>lib/jquery.mobile-1.3.0.js</include>
-		        		<include>lib/jasmine-jquery.js</include>
-						<include>lib/jasmine-fixture.js</include>
-						
-						<include>globalVars.js</include>
-						<include>Utils.js</include>
 		        		<include>**/*.js</include>
 		        	</sourceIncludes>
 		        	
-		        	<jsTestSrcDir>src/test/js</jsTestSrcDir>
-
+		        	<jsTestSrcDir>${project.basedir}/src/test/js</jsTestSrcDir>
+ 
 		        	<specIncludes>
+		        		<include>testConfig.js</include>
 		        		<include>**/*.js</include>
 		        	</specIncludes>
+		        	
 		        	
 		        </configuration>
 	      	</plugin>
@@ -198,8 +199,7 @@
 		   <groupId>org.jadira.usertype</groupId>
 		   <artifactId>usertype.core</artifactId>
 		   <version>3.1.0.CR8</version>
-		</dependency>
-            
+		</dependency>   
             
 	</dependencies>
 	

@@ -1,5 +1,3 @@
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '../../', 'lib'))
-
 require 'players_page'
 
 When /^I go to the Players page$/ do
@@ -39,7 +37,7 @@ Then /^the list contains each Player's total losses$/ do
 end
 
 Then /^the list contains each Player's Elo rating$/ do
-  fail('\'Elo Rating\' does not exist') unless(!@players_page.elo_rating.nil?)
+  fail('\'Elo Rating\' does not exist') unless(!@players_page.elo.nil?)
 end
 
 Then /^the list contains each Player's Categories$/ do
